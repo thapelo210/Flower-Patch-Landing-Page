@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Flower Patch</title>
   <link rel="icon" type="image/png" href="FlowerPatch Icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -15,7 +18,7 @@
     }
 
     body {
-      background: url('Pink Mono Flower.png') no-repeat  95% center / cover,#c07ab0;
+      background: url('Pink Mono Flower.png') no-repeat 95% center / cover, #c07ab0;
       color: #fff;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
@@ -46,8 +49,6 @@
       display: inline-block;
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
     }
-
-    .nav-brand-icon { font-size: 1.5rem; }
 
     nav a.contact {
       font-size: 0.9rem;
@@ -88,6 +89,7 @@
 
     .carousel-card {
       border-radius: 20px;
+      /* Kept backdrop-filter ONLY on the single large main slider element */
       background: rgba(255, 255, 255, 0.08); 
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px); 
@@ -236,7 +238,8 @@
     }
 
     .pcard {
-      background: rgba(255, 255, 255, 0.08); 
+      /* SPEED OPTIMIZATION: Swapped composite blur filters for a smooth solid tint to keep scrolling fluid */
+      background: rgba(255, 255, 255, 0.14); 
       border-radius: 18px;
       padding: 0 0 1rem;
       display: flex;
@@ -245,17 +248,15 @@
       cursor: pointer;
       overflow: visible;
       position: relative;
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
       box-shadow: 
-        inset 0 0 0 2px rgba(255, 255, 255, 0.2),
-        0 12px 32px rgba(0, 0, 0, 0.25);
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
+        0 10px 24px rgba(0, 0, 0, 0.18);
       transition: background .3s, transform .3s, box-shadow .3s;
       width: 210px;
       min-height: 240px;
     }
     .pcard:hover {
-      background: rgba(255,255,255,.3);
+      background: rgba(255,255,255,.25);
       transform: translateY(-7px);
       box-shadow: 0 18px 40px rgba(0,0,0,.15);
     }
@@ -311,7 +312,6 @@
       line-height: 1.2;
       margin-bottom: 1rem;
     }
-    .footer-brand-icon { font-size: 2rem; margin-top: 2px; }
 
     .footer-addr {
       font-size: 0.83rem;
@@ -342,14 +342,9 @@
     .flink:hover { opacity: .65; }
 
     .flink-ico {
-      width: 26px; height: 26px;
-      border: 1.5px solid rgba(255,255,255,.6);
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.75rem;
-      font-style: normal;
       flex-shrink: 0;
     }
 
@@ -374,7 +369,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-brand">
     <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" />
@@ -383,13 +377,11 @@
   <a href="#contact" class="contact">Contact</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <h1>Natural Bloom</h1>
   <p>Every occasion deserves a touch of nature's perfection. We handcraft stunning, fresh floral arrangements that speak louder than words, transforming your special moments into unforgettable memories.</p>
 </section>
 
-<!-- CAROUSEL -->
 <section class="carousel-outer">
   <button class="carousel-arrow prev" id="prevBtn">&#8249;</button>
   <button class="carousel-arrow next" id="nextBtn">&#8250;</button>
@@ -397,7 +389,6 @@
   <div class="carousel-card">
     <div class="carousel-track" id="track">
 
-      <!-- Slide 1 -->
       <div class="carousel-slide">
         <div class="slide-body">
           <div class="slide-name">Dieffenbachia</div>
@@ -405,11 +396,10 @@
           <div class="slide-desc">With its broad, broad-brimmed foliage and dense growth habit, the Dieffenbachia breathes life and fresh energy into any interior. Its lush, patterned leaves add a layer of natural texture that instantly softens a room and makes a house feel like a home</div>
         </div>
         <div class="slide-img-col">
-          <img src="Diffenbachia.png" alt="Dieffenbachia" style="height: 700px; width: 500px;position: relative; bottom: 20px; right: 15px;left: 100px;"onerror="this.style.fontSize='5rem'" />
+          <img src="Diffenbachia.png" alt="Dieffenbachia" loading="eager" style="height: 700px; width: 500px; position: relative; bottom: 20px; right: 15px; left: 100px;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
-      <!-- Slide 2 -->
       <div class="carousel-slide">
         <div class="slide-body">
           <div class="slide-name">Classic Red Rose Bouquet</div>
@@ -417,11 +407,10 @@
           <div class="slide-desc">A stunning arrangement of hand-selected deep red roses, each one freshly cut and carefully wrapped. Perfect for expressing love, gratitude, or celebration — these roses make every moment unforgettable.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet"style="height: 700px; width: 500px;position: relative;top: 60px; bottom: 0px; right: 80px;left: 0px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 700px; width: 500px; position: relative; top: 60px; bottom: 0px; right: 80px; left: 0px;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
-      <!-- Slide 3 -->
       <div class="carousel-slide">
         <div class="slide-body">
           <div class="slide-name">Rex Begonia</div>
@@ -429,11 +418,10 @@
           <div class="slide-desc">The Rex Begonia is a showstopper with its vivid, jewel-toned foliage and intricate leaf patterns. Thrives in bright indirect light and brings bold colour and rich texture to any indoor space.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Rex Begonia.png" alt="Rex Begonia"style="height: 610px; width: 410px;position: relative;top: 80px; bottom: 5px; right: 50px;left: 35px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 610px; width: 410px; position: relative; top: 80px; bottom: 5px; right: 50px; left: 35px;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
-      <!-- Slide 4 -->
       <div class="carousel-slide">
         <div class="slide-body">
           <div class="slide-name">White Avalanche Rose Bouquet</div>
@@ -441,11 +429,10 @@
           <div class="slide-desc">Soft, creamy white roses gathered into a full, cloud-like bouquet. The White Avalanche rose is renowned for its large blooms and long vase life — a favourite for weddings and heartfelt gestures.</div>
         </div>
         <div class="slide-img-col">
-          <img src="White Rose.png" alt="White Avalanche Rose Bouquet"style="height: 500px; width: 290px;position: relative;top: 10px; bottom: 80px; right: 180px;left: -20px;" onerror="this.style.fontSize='5rem'" />
+          <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" style="height: 500px; width: 290px; position: relative; top: 10px; bottom: 80px; right: 180px; left: -20px;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
-      <!-- Slide 5 -->
       <div class="carousel-slide">
         <div class="slide-body">
           <div class="slide-name">Sunny Meadows Bouquet</div>
@@ -453,18 +440,16 @@
           <div class="slide-desc">A vibrant mix of sunflowers, white lilies, and seasonal blooms that captures the warmth of a summer meadow. This golden arrangement radiates positivity and makes a joyful statement in any space.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet"style="height: 550px; width: 400px;position: relative;top: 0px; bottom: 0px; right: 15px;left: 50px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" style="height: 550px; width: 400px; position: relative; top: 0px; bottom: 0px; right: 15px; left: 50px;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
     </div>
 
-    <!-- Dots inside card -->
     <div class="carousel-dots" id="dots"></div>
   </div>
 </section>
 
-<!-- EXPLORE FLOWERS & PLANTS -->
 <section class="explore" id="products">
   <h2>Explore Flowers &amp; Plants</h2>
 
@@ -472,42 +457,42 @@
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Diffenbachia.png" alt="Dieffenbachia" />
+        <img src="Diffenbachia.png" alt="Dieffenbachia" loading="lazy" />
       </div>
       <p class="pcard-name">Dieffenbachia</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet"style="height: 515px; width: 330px; position: relative; top: 55px; left: 0px;" />
+        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 515px; width: 330px; position: relative; top: 55px; left: 0px;" />
       </div>
       <p class="pcard-name">Classic Red Rose Bouquet</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rex Begonia.png" alt="Rex Begonia"style="height: 490px; width: 290px; position: relative; top: 55px; left: 0px;" />
+        <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 490px; width: 290px; position: relative; top: 55px; left: 0px;" />
       </div>
       <p class="pcard-name">Rex Begonia</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="White Rose.png" alt="White Avalanche Rose Bouquet" />
+        <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" />
       </div>
       <p class="pcard-name">White Avalanche Rose Bouquet</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Calathea.png" alt="Calathea" />
+        <img src="Calathea.png" alt="Calathea" loading="lazy" />
       </div>
       <p class="pcard-name">Calathea</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" />
+        <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" />
       </div>
       <p class="pcard-name">Sunny Meadows Bouquet</p>
     </div>
@@ -515,15 +500,14 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer id="contact">
   <div>
     <div class="footer-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
       <img src="FlowerPatch Icon.png" 
            alt="Logo" 
            class="nav-brand-img" 
-           style="width: 40px; height: 40px; object-fit: cover; align-self: center;position: relative;right: 8px;"/>
-      <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px;right: 8px;">The Flower Patch</span>
+           style="width: 40px; height: 40px; object-fit: cover; align-self: center; position: relative; right: 8px;"/>
+      <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px; right: 8px;">The Flower Patch</span>
     </div>
     <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
   </div>
@@ -531,20 +515,20 @@
   <div class="footer-links" style="display: flex; flex-direction: column; gap: 15px;">
     
     <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;">
-      <span>
+      <span class="flink-ico">
         <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
       </span>
       <span style="position: relative; top: 2px;">the_flowerpatch_byo</span>
     </a>
 
-    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
-      <span>
-        <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px;position: relative;right: 6px;" />
+    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white; position: relative; right: 21px;">
+      <span class="flink-ico">
+        <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px; position: relative; right: 6px;" />
       </span>
       <span style="position: relative; top: 1px;">The Flower Patch</span>
     </a>
 
-    <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
+    <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white; position: relative; right: 21px;">
       <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
       <span style="position: relative; top: 1px;">+263 77 195 0162</span>
     </a>
