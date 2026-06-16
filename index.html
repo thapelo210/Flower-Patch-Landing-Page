@@ -14,8 +14,6 @@
       scroll-behavior: smooth;
     }
 
-    
-
     body {
       background: url('Pink Mono Flower.png') no-repeat  95% center / cover,#c07ab0;
       color: #fff;
@@ -38,7 +36,6 @@
       gap: 0.55rem;
       font-size: 1.05rem;
       font-weight: 700;
-
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
     
@@ -47,10 +44,8 @@
       width: auto;
       object-fit: contain;
       display: inline-block;
-
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
     }
-
 
     .nav-brand-icon { font-size: 1.5rem; }
 
@@ -60,7 +55,6 @@
       color: #fff;
       text-decoration: none;
       transition: opacity .2s;
-
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
     nav a.contact:hover { opacity: .65; }
@@ -75,7 +69,6 @@
       font-weight: 800;
       line-height: 1.0;
       margin-bottom: 1rem;
-
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
 
@@ -85,8 +78,6 @@
       color: rgba(255,255,255,.82);
       max-width: 650px;
       line-height: 1.7;
-
-
     }
 
     /* ── CAROUSEL ── */
@@ -95,22 +86,14 @@
       padding: 2rem 2.8rem;
     }
 
-/* Find your carousel card class (usually .carousel-card) */
     .carousel-card {
-
       border-radius: 20px;
-      /* ... keep your existing width, height, or border-radius properties ... */
-      
-      background: rgba(255, 255, 255, 0.08); /* Semi-transparent background so the blur is visible */
-      
-      /* 1. BACKGROUND BLUR (Glassmorphism effect) */
+      background: rgba(255, 255, 255, 0.08); 
       backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px); /* Support for Safari browsers */
-
-      /* 2. DROP SHADOW & 3. INSIDE STROKE (Weight of 2px) */
+      -webkit-backdrop-filter: blur(20px); 
       box-shadow: 
-        inset 0 0 0 2px rgba(255, 255, 255, 0.2), /* The 2px inner stroke */
-        0 12px 32px rgba(0, 0, 0, 0.25);          /* The smooth outer drop shadow */
+        inset 0 0 0 2px rgba(255, 255, 255, 0.2), 
+        0 12px 32px rgba(0, 0, 0, 0.25);          
     }
 
     .carousel-track {
@@ -128,12 +111,9 @@
     }
 
     .slide-body {
-      
       display: flex;
       flex-direction: column;
       justify-content: center;
-      
-      
       padding-bottom: 4rem;
       padding-left: 3rem;
      }
@@ -208,7 +188,7 @@
       transform: scale(1.35);
     }
 
-.carousel-arrow {
+    .carousel-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
@@ -231,7 +211,6 @@
       transform: translateY(-50%) scale(1.1);
     }
     
-    /* FIX: Removed the spaces between the number and 'rem' */
     .carousel-arrow.prev { left: 3rem; }
     .carousel-arrow.next { right: 3rem; }
 
@@ -245,10 +224,7 @@
       font-weight: 800;
       text-align: center;
       margin-bottom: 2.2rem;
-
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-
-      
     }
 
     .grid {
@@ -259,8 +235,7 @@
       margin: 0 auto;
     }
 
-.pcard {
-      /* Semi-transparent background so the blur can be seen underneath */
+    .pcard {
       background: rgba(255, 255, 255, 0.08); 
       border-radius: 18px;
       padding: 0 0 1rem;
@@ -270,19 +245,12 @@
       cursor: pointer;
       overflow: visible;
       position: relative;
-      
-      /* 1. BACKGROUND BLUR (Frosted glass look) */
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-
-      /* 2. 2px INSIDE STROKE + 3. DEEP DROP SHADOW */
       box-shadow: 
         inset 0 0 0 2px rgba(255, 255, 255, 0.2),
         0 12px 32px rgba(0, 0, 0, 0.25);
-
-      /* Keeps your hover transitions smooth */
       transition: background .3s, transform .3s, box-shadow .3s;
-
       width: 210px;
       min-height: 240px;
     }
@@ -438,7 +406,6 @@
         </div>
         <div class="slide-img-col">
           <img src="Diffenbachia.png" alt="Dieffenbachia" style="height: 700px; width: 500px;position: relative; bottom: 20px; right: 15px;left: 100px;"onerror="this.style.fontSize='5rem'" />
-
         </div>
       </div>
 
@@ -551,51 +518,47 @@
 <!-- FOOTER -->
 <footer id="contact">
   <div>
-<div class="footer-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-  <img src="FlowerPatch Icon.png" 
-       alt="Logo" 
-       class="nav-brand-img" 
-       style="width: 40px; height: 40px; object-fit: cover; align-self: center;position: relative;right: 8px;"/>
-
-  <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px;right: 8px;">The Flower Patch</span>
-</div>
-<p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
+    <div class="footer-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+      <img src="FlowerPatch Icon.png" 
+           alt="Logo" 
+           class="nav-brand-img" 
+           style="width: 40px; height: 40px; object-fit: cover; align-self: center;position: relative;right: 8px;"/>
+      <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px;right: 8px;">The Flower Patch</span>
+    </div>
+    <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
   </div>
 
-<div class="footer-links" style="display: flex; flex-direction: column; gap: 15px;">
-  
-  <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;">
-    <span>
-      <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
-    </span>
-    <span style="position: relative; top: 2px;">the_flowerpatch_byo</span>
-  </a>
+  <div class="footer-links" style="display: flex; flex-direction: column; gap: 15px;">
+    
+    <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;">
+      <span>
+        <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
+      </span>
+      <span style="position: relative; top: 2px;">the_flowerpatch_byo</span>
+    </a>
 
-  <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
-      <span >
-      <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px;;position: relative;right: 6px;" />
-    </span>
-    <span style="position: relative; top: 1px;">The Flower Patch</span>
-  </a>
+    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
+      <span>
+        <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px;position: relative;right: 6px;" />
+      </span>
+      <span style="position: relative; top: 1px;">The Flower Patch</span>
+    </a>
 
-  <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;;">
-    </span>
+    <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
+      <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
+      <span style="position: relative; top: 1px;">+263 77 195 0162</span>
+    </a>
 
-    <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
-
-    <span style="position: relative; top: 1px;">+263 77 195 0162</span>
-  </a>
-
-</div>
+  </div>
 
   <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
 </footer>
 
 <script>
-  const track  = document.getElementById('track');
-  const dots   = document.getElementById('dots');
-  const prev   = document.getElementById('prevBtn');
-  const next   = document.getElementById('nextBtn');
+  const track   = document.getElementById('track');
+  const dots    = document.getElementById('dots');
+  const prev    = document.getElementById('prevBtn');
+  const next    = document.getElementById('nextBtn');
   const slides = track.querySelectorAll('.carousel-slide');
   const N      = slides.length;
   let cur = 0, timer;
