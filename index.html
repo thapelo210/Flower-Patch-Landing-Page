@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Flower Patch</title>
+  <link rel="icon" type="image/png" href="FlowerPatch Icon.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    
+
+    body {
+      background: url('Pink Mono Flower.png') no-repeat  95% center / cover,#c07ab0;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 2.2rem;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+    
+    .nav-brand-img {
+      height: 1.4rem;
+      width: auto;
+      object-fit: contain;
+      display: inline-block;
+
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
+    }
+
+
+    .nav-brand-icon { font-size: 1.5rem; }
+
+    nav a.contact {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity .2s;
+
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+    nav a.contact:hover { opacity: .65; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 1rem 2.2rem 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-weight: 800;
+      line-height: 1.0;
+      margin-bottom: 1rem;
+
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero p {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.82);
+      max-width: 650px;
+      line-height: 1.7;
+
+
+    }
+
+    /* ── CAROUSEL ── */
+    .carousel-outer {
+      position: relative;
+      padding: 2rem 2.8rem;
+    }
+
+/* Find your carousel card class (usually .carousel-card) */
+    .carousel-card {
+
+      border-radius: 20px;
+      /* ... keep your existing width, height, or border-radius properties ... */
+      
+      background: rgba(255, 255, 255, 0.08); /* Semi-transparent background so the blur is visible */
+      
+      /* 1. BACKGROUND BLUR (Glassmorphism effect) */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px); /* Support for Safari browsers */
+
+      /* 2. DROP SHADOW & 3. INSIDE STROKE (Weight of 2px) */
+      box-shadow: 
+        inset 0 0 0 2px rgba(255, 255, 255, 0.2), /* The 2px inner stroke */
+        0 12px 32px rgba(0, 0, 0, 0.25);          /* The smooth outer drop shadow */
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform .6s cubic-bezier(.4,0,.2,1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      padding: 2rem 0 2rem 2rem;
+      gap: 1rem;
+    }
+
+    .slide-body {
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      
+      
+      padding-bottom: 4rem;
+      padding-left: 3rem;
+     }
+
+    .slide-name {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .slide-subtitle {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.75);
+      margin-bottom: 0.9rem;
+    }
+
+    .slide-desc {
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.78);
+      line-height: 1.75;
+      max-width: 480px;
+    }
+
+    .slide-img-col {
+      align-self: end;
+      width: 280px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding-right: 1.5rem;
+      padding-bottom: 0;
+      height: 300px;
+    }
+
+    .slide-img-col img {
+      width: 270px;
+      height: 270px;
+      object-fit: contain;
+      object-position: bottom center;
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,.2));
+      transition: transform .4s;
+    }
+
+    .carousel-slide:hover .slide-img-col img {
+      transform: translateY(-6px) scale(1.04);
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 7px;
+      padding-bottom: 1.2rem;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background .3s, transform .3s;
+    }
+    .dot.active {
+      background: #fff;
+      transform: scale(1.35);
+    }
+
+.carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,.7);
+      background: transparent;
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .carousel-arrow:hover {
+      background: rgba(255,255,255,.22);
+      border-color: #fff;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    /* FIX: Removed the spaces between the number and 'rem' */
+    .carousel-arrow.prev { left: 3rem; }
+    .carousel-arrow.next { right: 3rem; }
+
+    /* ── EXPLORE ── */
+    .explore {
+      padding: 3rem 2.2rem 4rem;
+    }
+
+    .explore h2 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 2.2rem;
+
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+
+      
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+.pcard {
+      /* Semi-transparent background so the blur can be seen underneath */
+      background: rgba(255, 255, 255, 0.08); 
+      border-radius: 18px;
+      padding: 0 0 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      overflow: visible;
+      position: relative;
+      
+      /* 1. BACKGROUND BLUR (Frosted glass look) */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      /* 2. 2px INSIDE STROKE + 3. DEEP DROP SHADOW */
+      box-shadow: 
+        inset 0 0 0 2px rgba(255, 255, 255, 0.2),
+        0 12px 32px rgba(0, 0, 0, 0.25);
+
+      /* Keeps your hover transitions smooth */
+      transition: background .3s, transform .3s, box-shadow .3s;
+
+      width: 210px;
+      min-height: 240px;
+    }
+    .pcard:hover {
+      background: rgba(255,255,255,.3);
+      transform: translateY(-7px);
+      box-shadow: 0 18px 40px rgba(0,0,0,.15);
+    }
+
+    .pcard-img-wrap {
+      width: 100%;
+      height: 160px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: visible;
+      position: relative;
+    }
+
+    .pcard-img-wrap img {
+      height: 180px;
+      width: auto;
+      object-fit: contain;
+      object-position: bottom;
+      margin-top: -20px;
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+      transition: transform .35s;
+    }
+
+    .pcard:hover .pcard-img-wrap img {
+      transform: scale(1.08) translateY(-5px);
+    }
+
+    .pcard-name {
+      font-size: 0.88rem;
+      font-weight: 500;
+      text-align: center;
+      color: #fff;
+      padding: 0.6rem 0.8rem 0;
+      line-height: 1.35;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #000;
+      padding: 2.8rem 2.2rem 1.8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem 2rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .footer-brand-icon { font-size: 2rem; margin-top: 2px; }
+
+    .footer-addr {
+      font-size: 0.83rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.55);
+      line-height: 1.65;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .flink {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .flink:hover { opacity: .65; }
+
+    .flink-ico {
+      width: 26px; height: 26px;
+      border: 1.5px solid rgba(255,255,255,.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-style: normal;
+      flex-shrink: 0;
+    }
+
+    .footer-credit {
+      grid-column: 1/-1;
+      text-align: right;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,.3);
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-credit a { color: rgba(255,255,255,.45); text-decoration: none; }
+
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+      footer { grid-template-columns: 1fr; }
+      .footer-links { align-items: flex-start; }
+      .slide-img-col { width: 140px; height: 240px; }
+      .slide-img-col img { width: 130px; height: 210px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" />
+    The Flower Patch
+  </div>
+  <a href="#contact" class="contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Natural Bloom</h1>
+  <p>Every occasion deserves a touch of nature's perfection. We handcraft stunning, fresh floral arrangements that speak louder than words, transforming your special moments into unforgettable memories.</p>
+</section>
+
+<!-- CAROUSEL -->
+<section class="carousel-outer">
+  <button class="carousel-arrow prev" id="prevBtn">&#8249;</button>
+  <button class="carousel-arrow next" id="nextBtn">&#8250;</button>
+
+  <div class="carousel-card">
+    <div class="carousel-track" id="track">
+
+      <!-- Slide 1 -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <div class="slide-name">Dieffenbachia</div>
+          <div class="slide-subtitle">Vibrant Greenery &amp; Fresh Energy</div>
+          <div class="slide-desc">With its broad, broad-brimmed foliage and dense growth habit, the Dieffenbachia breathes life and fresh energy into any interior. Its lush, patterned leaves add a layer of natural texture that instantly softens a room and makes a house feel like a home</div>
+        </div>
+        <div class="slide-img-col">
+          <img src="Diffenbachia.png" alt="Dieffenbachia" style="height: 700px; width: 500px;position: relative; bottom: 20px; right: 15px;left: 100px;"onerror="this.style.fontSize='5rem'" />
+
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <div class="slide-name">Classic Red Rose Bouquet</div>
+          <div class="slide-subtitle">Timeless Love &amp; Passion</div>
+          <div class="slide-desc">A stunning arrangement of hand-selected deep red roses, each one freshly cut and carefully wrapped. Perfect for expressing love, gratitude, or celebration — these roses make every moment unforgettable.</div>
+        </div>
+        <div class="slide-img-col">
+          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet"style="height: 700px; width: 500px;position: relative;top: 60px; bottom: 0px; right: 80px;left: 0px;" onerror="this.style.fontSize='5rem'" />
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <div class="slide-name">Rex Begonia</div>
+          <div class="slide-subtitle">Bold Colour &amp; Rich Texture</div>
+          <div class="slide-desc">The Rex Begonia is a showstopper with its vivid, jewel-toned foliage and intricate leaf patterns. Thrives in bright indirect light and brings bold colour and rich texture to any indoor space.</div>
+        </div>
+        <div class="slide-img-col">
+          <img src="Rex Begonia.png" alt="Rex Begonia"style="height: 610px; width: 410px;position: relative;top: 80px; bottom: 5px; right: 50px;left: 35px;" onerror="this.style.fontSize='5rem'" />
+        </div>
+      </div>
+
+      <!-- Slide 4 -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <div class="slide-name">White Avalanche Rose Bouquet</div>
+          <div class="slide-subtitle">Pure Elegance &amp; Grace</div>
+          <div class="slide-desc">Soft, creamy white roses gathered into a full, cloud-like bouquet. The White Avalanche rose is renowned for its large blooms and long vase life — a favourite for weddings and heartfelt gestures.</div>
+        </div>
+        <div class="slide-img-col">
+          <img src="White Rose.png" alt="White Avalanche Rose Bouquet"style="height: 500px; width: 290px;position: relative;top: 10px; bottom: 80px; right: 180px;left: -20px;" onerror="this.style.fontSize='5rem'" />
+        </div>
+      </div>
+
+      <!-- Slide 5 -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <div class="slide-name">Sunny Meadows Bouquet</div>
+          <div class="slide-subtitle">Warmth &amp; Cheerful Energy</div>
+          <div class="slide-desc">A vibrant mix of sunflowers, white lilies, and seasonal blooms that captures the warmth of a summer meadow. This golden arrangement radiates positivity and makes a joyful statement in any space.</div>
+        </div>
+        <div class="slide-img-col">
+          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet"style="height: 550px; width: 400px;position: relative;top: 0px; bottom: 0px; right: 15px;left: 50px;" onerror="this.style.fontSize='5rem'" />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Dots inside card -->
+    <div class="carousel-dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- EXPLORE FLOWERS & PLANTS -->
+<section class="explore" id="products">
+  <h2>Explore Flowers &amp; Plants</h2>
+
+  <div class="grid">
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Diffenbachia.png" alt="Dieffenbachia" />
+      </div>
+      <p class="pcard-name">Dieffenbachia</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet"style="height: 515px; width: 330px; position: relative; top: 55px; left: 0px;" />
+      </div>
+      <p class="pcard-name">Classic Red Rose Bouquet</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Rex Begonia.png" alt="Rex Begonia"style="height: 490px; width: 290px; position: relative; top: 55px; left: 0px;" />
+      </div>
+      <p class="pcard-name">Rex Begonia</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="White Rose.png" alt="White Avalanche Rose Bouquet" />
+      </div>
+      <p class="pcard-name">White Avalanche Rose Bouquet</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Calathea.png" alt="Calathea" />
+      </div>
+      <p class="pcard-name">Calathea</p>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" />
+      </div>
+      <p class="pcard-name">Sunny Meadows Bouquet</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div>
+<div class="footer-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+  <img src="FlowerPatch Icon.png" 
+       alt="Logo" 
+       class="nav-brand-img" 
+       style="width: 40px; height: 40px; object-fit: cover; align-self: center;position: relative;right: 8px;"/>
+
+  <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px;right: 8px;">The Flower Patch</span>
+</div>
+<p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
+  </div>
+
+<div class="footer-links" style="display: flex; flex-direction: column; gap: 15px;">
+  
+  <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;">
+    <span>
+      <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
+    </span>
+    <span style="position: relative; top: 2px;">the_flowerpatch_byo</span>
+  </a>
+
+  <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;">
+      <span >
+      <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px;;position: relative;right: 6px;" />
+    </span>
+    <span style="position: relative; top: 1px;">The Flower Patch</span>
+  </a>
+
+  <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;position: relative;right: 21px;;">
+    </span>
+
+    <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
+
+    <span style="position: relative; top: 1px;">+263 77 195 0162</span>
+  </a>
+
+</div>
+
+  <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
+</footer>
+
+<script>
+  const track  = document.getElementById('track');
+  const dots   = document.getElementById('dots');
+  const prev   = document.getElementById('prevBtn');
+  const next   = document.getElementById('nextBtn');
+  const slides = track.querySelectorAll('.carousel-slide');
+  const N      = slides.length;
+  let cur = 0, timer;
+
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => go(i);
+    dots.appendChild(d);
+  });
+
+  function go(n) {
+    cur = (n + N) % N;
+    track.style.transform = `translateX(-${cur * 100}%)`;
+    dots.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === cur));
+    reset();
+  }
+
+  function reset() {
+    clearInterval(timer);
+    timer = setInterval(() => go(cur + 1), 5000);
+  }
+
+  prev.onclick = () => go(cur - 1);
+  next.onclick = () => go(cur + 1);
+
+  const sec = track.closest('.carousel-outer');
+  sec.addEventListener('mouseenter', () => clearInterval(timer));
+  sec.addEventListener('mouseleave', reset);
+
+  let tx = 0;
+  track.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
+  track.addEventListener('touchend',   e => { const d = tx - e.changedTouches[0].clientX; if (Math.abs(d) > 40) go(cur + (d > 0 ? 1 : -1)); });
+
+  document.addEventListener('keydown', e => { if (e.key==='ArrowLeft') go(cur-1); if (e.key==='ArrowRight') go(cur+1); });
+
+  reset();
+</script>
+</body>
+</html>
