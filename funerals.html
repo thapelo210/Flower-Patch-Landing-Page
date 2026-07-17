@@ -168,6 +168,7 @@
       width: 240px;
       min-height: 380px;
       margin: 0 auto;
+      scroll-margin-top: 2rem; /* Keeps layout spacing clean when scrolling directly to the element */
     }
     
     .pcard:hover {
@@ -228,6 +229,9 @@
     }
 
     .pcard-btn {
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
       background: #fff;
       color: #c07ab0;
       border: none;
@@ -355,34 +359,37 @@
 <section class="explore">
   <div class="grid">
 
-    <div class="pcard">
+    <!-- Option 1: Stand Pedestal Floral Sprays -->
+    <div class="pcard" id="easel-spray">
       <div class="pcard-img-wrap">
         <img src="WhatsApp Image 2026-06-23 at 11.59.48.jpeg" alt="Easel Stand Memorial Spray" loading="lazy" />
       </div>
       <p class="pcard-name">Easel Stand Spray</p>
       <p class="pcard-desc">An outstanding exhibition setup displaying radiant gold sunflowers, premium lilies, and mixed seasonal white filler blooms built to bring light and honor onto chapels.</p>
       <div class="pcard-price">$120.00</div>
-      <button class="pcard-btn">Enquire Now</button>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Easel%20Stand%20Spray%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Ffunerals.html%23easel-spray" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
-    <div class="pcard">
+    <!-- Option 2: Full Coffin Exhibition Tributes -->
+    <div class="pcard" id="casket-tribute">
       <div class="pcard-img-wrap">
         <img src="WhatsApp Image 2026-06-23 at 11.59.48 (2).jpeg" alt="Full Venue Custom Coffin Arrangement" loading="lazy" />
       </div>
       <p class="pcard-name">Full Casket Tribute Suite</p>
       <p class="pcard-desc">A premium complete ceremonial setup, integrating cascading pure white floral mounds alongside a matching structured floral heart piece for a unified elegant presentation.</p>
       <div class="pcard-price">$375.00</div>
-      <button class="pcard-btn">Enquire Now</button>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Full%20Casket%20Tribute%20Suite%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Ffunerals.html%23casket-tribute" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
-    <div class="pcard">
+    <!-- Option 3: Traditional Memorial Wreath -->
+    <div class="pcard" id="memorial-wreath">
       <div class="pcard-img-wrap">
         <img src="WhatsApp Image 2026-06-23 at 11.59.48 (1).jpeg" alt="Classic Circular Memorial Wreath" loading="lazy" />
       </div>
       <p class="pcard-name">Classic Memorial Wreath</p>
       <p class="pcard-desc">A beautiful ring-shaped tribute featuring vibrant yellow chrysanthemums, alternating deep maroon carnations, and fresh delicate baby's breath accents.</p>
       <div class="pcard-price">$100.00</div>
-      <button class="pcard-btn">Enquire Now</button>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Classic%20Memorial%20Wreath%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Ffunerals.html%23memorial-wreath" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
   </div>
