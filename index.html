@@ -25,12 +25,14 @@
       min-height: 100vh;
     }
 
-    /* ── NAV ── */
+    /* ── NAV (Fixed overlapping layer bug) ── */
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 1.1rem 2.2rem;
+      position: relative;
+      z-index: 50; /* Forces nav to sit above elements bleeding up from the carousel */
     }
 
     .nav-brand {
@@ -50,14 +52,12 @@
       filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
     }
 
-    /* Flex wrapper to group nav items uniformly */
     .nav-links {
       display: flex;
       align-items: center;
       gap: 1.5rem;
     }
 
-    /* Consistent style across all text navigation anchors/buttons */
     .nav-item {
       font-size: 0.9rem;
       font-weight: 400;
@@ -108,6 +108,7 @@
       box-shadow: 
         inset 0 0 0 2px rgba(255, 255, 255, 0.2), 
         0 12px 32px rgba(0, 0, 0, 0.25);          
+      overflow: hidden; /* Added to keep large images from bleeding into layout bounds */
     }
 
     .carousel-track {
@@ -414,7 +415,7 @@
           <div class="slide-desc">With its broad, broad-brimmed foliage and dense growth habit, the Dieffenbachia breathes life and fresh energy into any interior. Its lush, patterned leaves add a layer of natural texture that instantly softens a room and makes a house feel like a home</div>
         </div>
         <div class="slide-img-col">
-          <img src="Diffenbachia.png" alt="Dieffenbachia" loading="eager" style="height: 700px; width: 500px; position: relative; bottom: 20px; right: 15px; left: 100px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Diffenbachia.png" alt="Dieffenbachia" loading="eager" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
@@ -425,7 +426,7 @@
           <div class="slide-desc">A stunning arrangement of hand-selected deep red roses, each one freshly cut and carefully wrapped. Perfect for expressing love, gratitude, or celebration — these roses make every moment unforgettable.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 700px; width: 500px; position: relative; top: 60px; bottom: 0px; right: 80px; left: 0px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
@@ -436,7 +437,7 @@
           <div class="slide-desc">The Rex Begonia is a showstopper with its vivid, jewel-toned foliage and intricate leaf patterns. Thrives in bright indirect light and brings bold colour and rich texture to any indoor space.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 610px; width: 410px; position: relative; top: 80px; bottom: 5px; right: 50px; left: 35px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
@@ -447,7 +448,7 @@
           <div class="slide-desc">Soft, creamy white roses gathered into a full, cloud-like bouquet. The White Avalanche rose is renowned for its large blooms and long vase life — a favourite for weddings and heartfelt gestures.</div>
         </div>
         <div class="slide-img-col">
-          <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" style="height: 500px; width: 290px; position: relative; top: 10px; bottom: 80px; right: 180px; left: -20px;" onerror="this.style.fontSize='5rem'" />
+          <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
@@ -458,7 +459,7 @@
           <div class="slide-desc">A vibrant mix of sunflowers, white lilies, and seasonal blooms that captures the warmth of a summer meadow. This golden arrangement radiates positivity and makes a joyful statement in any space.</div>
         </div>
         <div class="slide-img-col">
-          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" style="height: 550px; width: 400px; position: relative; top: 0px; bottom: 0px; right: 15px; left: 50px;" onerror="this.style.fontSize='5rem'" />
+          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
         </div>
       </div>
 
@@ -482,14 +483,14 @@
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 515px; width: 330px; position: relative; top: 55px; left: 0px;" />
+        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 180px; width: auto; margin-top:-20px;" />
       </div>
       <p class="pcard-name">Classic Red Rose Bouquet</p>
     </div>
 
     <div class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 490px; width: 290px; position: relative; top: 55px; left: 0px;" />
+        <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 180px; width: auto; margin-top:-20px;" />
       </div>
       <p class="pcard-name">Rex Begonia</p>
     </div>
