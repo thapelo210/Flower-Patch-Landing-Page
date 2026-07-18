@@ -18,7 +18,7 @@
     }
 
     body {
-      background: url('Pink Mono Flower.png') no-repeat 95% center / cover, #c07ab0;
+      background: url('Pink Mono Flower.png') no-repeat 95% center / cover, #121010;
       color: #fff;
       font-family: 'Inter', sans-serif;
       overflow-x: hidden;
@@ -64,7 +64,8 @@
       gap: 1.5rem;
     }
 
-    nav a.home-link, nav a.contact, .dropdown-btn {
+    /* Consistent style across all text navigation components */
+    .nav-item {
       font-size: 0.9rem;
       font-weight: 400;
       color: #fff;
@@ -77,47 +78,7 @@
       font-family: inherit;
       padding: 0;
     }
-    nav a.home-link:hover, nav a.contact:hover, .dropdown-wrapper:hover .dropdown-btn { opacity: .65; }
-
-    /* Dropdown Component Setup */
-    .dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      right: 0;
-      top: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      min-width: 140px;
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-      border-radius: 8px;
-      padding: 0.5rem 0;
-      z-index: 100;
-      margin-top: 0.5rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown-wrapper:hover .dropdown-menu {
-      display: block;
-    }
-
-    .dropdown-menu a {
-      color: white;
-      padding: 0.6rem 1.2rem;
-      text-decoration: none;
-      display: block;
-      font-size: 0.85rem;
-      transition: background 0.2s;
-    }
-
-    .dropdown-menu a:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
+    .nav-item:hover { opacity: .65; }
 
     /* ── HERO ── */
     .hero {
@@ -168,7 +129,7 @@
       width: 240px;
       min-height: 380px;
       margin: 0 auto;
-      scroll-margin-top: 2rem; /* Keeps layout spacing clean when scrolling directly to the element */
+      scroll-margin-top: 2rem;
     }
     
     .pcard:hover {
@@ -233,7 +194,7 @@
       text-align: center;
       text-decoration: none;
       background: #fff;
-      color: #c07ab0;
+      color: #000000;
       border: none;
       border-radius: 20px;
       padding: 0.55rem 1.4rem;
@@ -340,14 +301,11 @@
   </div>
   
   <div class="nav-links">
-    <a href="index.html" class="home-link">Home</a>
-    <div class="dropdown-wrapper">
-      <button class="dropdown-btn">Services &#9662;</button>
-      <div class="dropdown-menu">
-        <a href="funerals.html">Funerals</a>
-      </div>
-    </div>
-    <a href="#contact" class="contact">Contact</a>
+    <button onclick="window.location.href='index.html'" class="nav-item">Home</button>
+    <button onclick="window.location.href='mixedbouquets.html'" class="nav-item">Mixed Bouquets</button>
+    <button onclick="window.location.href='vasarrangements.html'" class="nav-item">Vase Arrangements</button>
+    <button onclick="window.location.href='funerals.html'" class="nav-item">Funerals</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="nav-item">Contact</button>
   </div>
 </nav>
 
