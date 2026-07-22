@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weddings - The Flower Patch</title>
+  <link rel="icon" type="image/png" href="FlowerPatch Icon.png" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), 
+                  url('Wedding BG.jpeg') no-repeat center center / cover fixed, 
+                  #111;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.5rem 1.5rem;
+      position: relative;
+      z-index: 50;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+    
+    .nav-brand-img {
+      height: 1.6rem;
+      width: auto;
+      object-fit: contain;
+      display: inline-block;
+      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 1.2rem;
+      padding: 0.5rem 0.2rem 0.8rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-item {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #fff;
+      text-decoration: none;
+      transition: opacity .2s;
+      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: inherit;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .nav-item:hover { opacity: .65; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 2.5rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.8rem;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 650px;
+      line-height: 1.7;
+      margin: 0 auto;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    /* ── CATALOG SECTION ── */
+    .catalog {
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-items: center;
+    }
+
+    .pcard {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 20px;
+      padding: 0 0 1.8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      box-shadow: 
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
+        0 12px 32px rgba(0, 0, 0, 0.3);
+      transition: background .3s, transform .3s, box-shadow .3s;
+      width: 100%;
+      max-width: 320px;
+      overflow: hidden;
+    }
+
+    .pcard:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    .pcard-img-wrap {
+      width: 100%;
+      height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .pcard-img-wrap img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .pcard:hover .pcard-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .pcard-body {
+      padding: 1.2rem 1.2rem 0;
+      text-align: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .pcard-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .pcard-desc {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.6;
+      margin-bottom: 0.8rem;
+    }
+
+    .pcard-price {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.2rem;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .pcard-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 20px;
+      padding: 0.55rem 1.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: background 0.2s, transform 0.2s, color 0.2s;
+    }
+
+    .pcard-btn:hover {
+      background: #000;
+      color: #fff;
+      transform: scale(1.03);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #000;
+      padding: 3rem 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
+    }
+
+    .footer-addr {
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: rgba(255,255,255,.6);
+      line-height: 1.65;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .flink {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      font-size: 0.9rem;
+      color: #fff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .flink:hover { opacity: .65; }
+
+    .flink img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .footer-credit {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,.35);
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-credit a { color: rgba(255,255,255,.5); text-decoration: none; }
+
+    /* ── BREAKPOINTS ── */
+    @media (min-width: 768px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+      }
+      .nav-links {
+        width: auto;
+        overflow-x: visible;
+        white-space: normal;
+        padding: 0;
+        gap: 1.5rem;
+      }
+      .hero {
+        padding: 4rem 2.5rem 2rem;
+      }
+      footer {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 4rem 2rem;
+      }
+      .footer-links {
+        align-items: flex-end;
+      }
+      .footer-credit {
+        grid-column: 1 / -1;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" />
+    The Flower Patch
+  </div>
+  
+  <div class="nav-links">
+    <button onclick="window.location.href='index.html'" class="nav-item">Home</button>
+    <button onclick="window.location.href='roses.html'" class="nav-item">Roses</button>
+    <button onclick="window.location.href='mixedbouquets.html'" class="nav-item">Mixed Bouquets</button>
+    <button onclick="window.location.href='vasarrangements.html'" class="nav-item">Vase Arrangements</button>
+    <button onclick="window.location.href='special.html'" class="nav-item">Special Arrangements</button>
+    <button onclick="window.location.href='weddings.html'" class="nav-item">Weddings</button>
+    <button onclick="window.location.href='combos.html'" class="nav-item">Gift Combos</button>
+    <button onclick="window.location.href='funerals.html'" class="nav-item">Funerals</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="nav-item">Contact</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Wedding Flowers</h1>
+  <p>Bespoke bridal bouquets, venue florals, and tailored arrangements designed to elevate your special day with elegance and grace.</p>
+</section>
+
+<section class="catalog">
+  <div class="grid">
+    
+    <div class="pcard">
+      <div class="pcard-img-wrap">
+        <img src="Wedding item 1.jpeg" alt="Cascading Calla Lily & Rose Bridal Bouquet" loading="eager" />
+      </div>
+      <div class="pcard-body">
+        <div class="pcard-name">Cascading Bridal Bouquet</div>
+        <p class="pcard-desc">An extraordinary, dramatic cascade featuring pristine white calla lilies, tender cream roses, baby's breath, and deep green foliage.</p>
+        <div class="pcard-price">$80</div>
+        <a href="https://wa.me/263771950162?text=Hello,%20I%20would%20like%20to%20enquire%20about%20the%20Cascading%20Bridal%20Bouquet" target="_blank" class="pcard-btn">Enquire Now</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <div>
+    <div class="footer-brand">
+      <img src="FlowerPatch Icon.png" alt="Logo" />
+      <span>The Flower Patch</span>
+    </div>
+    <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
+  </div>
+
+  <div class="footer-links">
+    <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank">
+      <img src="insta icon.png" alt="Instagram" />
+      <span>the_flowerpatch_byo</span>
+    </a>
+
+    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank">
+      <img src="fbicon.png" alt="Facebook" />
+      <span>The Flower Patch</span>
+    </a>
+
+    <a class="flink" href="tel:+263771950162">
+      <img src="phone icon.webp" alt="Call" />
+      <span>+263 77 195 0162</span>
+    </a>
+  </div>
+
+  <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
+</footer>
+
+</body>
+</html>

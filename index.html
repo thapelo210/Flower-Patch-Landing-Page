@@ -25,27 +25,28 @@
       min-height: 100vh;
     }
 
-    /* ── NAV (Fixed overlapping layer bug) ── */
+    /* ── NAV ── */
     nav {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      padding: 1.1rem 2.2rem;
+      gap: 1.2rem;
+      padding: 1.5rem 1.5rem;
       position: relative;
-      z-index: 50; /* Forces nav to sit above elements bleeding up from the carousel */
+      z-index: 50;
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
       gap: 0.55rem;
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       font-weight: 700;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
     
     .nav-brand-img {
-      height: 1.4rem;
+      height: 1.6rem;
       width: auto;
       object-fit: contain;
       display: inline-block;
@@ -54,13 +55,22 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 1.2rem;
+      padding: 0.5rem 0.2rem 0.8rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-item {
-      font-size: 0.9rem;
-      font-weight: 400;
+      font-size: 0.88rem;
+      font-weight: 500;
       color: #fff;
       text-decoration: none;
       transition: opacity .2s;
@@ -70,37 +80,41 @@
       cursor: pointer;
       font-family: inherit;
       padding: 0;
+      flex-shrink: 0;
     }
     .nav-item:hover { opacity: .65; }
 
     /* ── HERO ── */
     .hero {
-      padding: 1rem 2.2rem 0;
+      padding: 2rem 1.5rem;
+      text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.8rem, 9vw, 6rem);
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
       font-weight: 800;
-      line-height: 1.0;
+      line-height: 1.1;
       margin-bottom: 1rem;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
 
     .hero p {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       font-weight: 300;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.85);
       max-width: 650px;
       line-height: 1.7;
+      margin: 0 auto;
     }
 
     /* ── CAROUSEL ── */
     .carousel-outer {
       position: relative;
-      padding: 2rem 2.8rem;
+      padding: 1rem 1.5rem 2rem;
     }
 
     .carousel-card {
+      position: relative; /* Context for arrows positioned inside */
       border-radius: 20px;
       background: rgba(255, 255, 255, 0.08); 
       backdrop-filter: blur(20px);
@@ -108,7 +122,7 @@
       box-shadow: 
         inset 0 0 0 2px rgba(255, 255, 255, 0.2), 
         0 12px 32px rgba(0, 0, 0, 0.25);          
-      overflow: hidden; /* Added to keep large images from bleeding into layout bounds */
+      overflow: hidden;
     }
 
     .carousel-track {
@@ -118,58 +132,91 @@
 
     .carousel-slide {
       min-width: 100%;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
-      padding: 2rem 0 2rem 2rem;
-      gap: 1rem;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      padding: 2rem 2.2rem 3.5rem;
+      gap: 2rem;
     }
 
     .slide-body {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding-bottom: 4rem;
-      padding-left: 3rem;
-     }
+      text-align: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .slide-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #000;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 0.25rem 0.75rem;
+      border-radius: 12px;
+      margin-bottom: 0.8rem;
+    }
 
     .slide-name {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
     }
 
     .slide-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 400;
-      color: rgba(255,255,255,.75);
-      margin-bottom: 0.9rem;
+      color: rgba(255,255,255,.8);
+      margin-bottom: 1rem;
     }
 
     .slide-desc {
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 300;
-      color: rgba(255,255,255,.78);
-      line-height: 1.75;
+      color: rgba(255,255,255,.82);
+      line-height: 1.7;
       max-width: 480px;
+      margin-bottom: 1.2rem;
+    }
+
+    .slide-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #fff;
+      color: #c07ab0;
+      border: none;
+      border-radius: 20px;
+      padding: 0.55rem 1.4rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s, transform 0.2s, color 0.2s;
+    }
+
+    .slide-btn:hover {
+      background: #000;
+      color: #fff;
+      transform: scale(1.03);
     }
 
     .slide-img-col {
-      align-self: end;
-      width: 280px;
+      width: 100%;
+      max-width: 240px;
+      height: 240px;
       display: flex;
-      align-items: flex-end;
-      justify-content: flex-end;
-      padding-right: 1.5rem;
-      padding-bottom: 0;
-      height: 300px;
+      align-items: center;
+      justify-content: center;
     }
 
     .slide-img-col img {
-      width: 270px;
-      height: 270px;
-      object-fit: contain;
-      object-position: bottom center;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.2));
       transition: transform .4s;
     }
@@ -181,16 +228,15 @@
     .carousel-dots {
       display: flex;
       justify-content: center;
-      gap: 7px;
-      padding-bottom: 1.2rem;
+      gap: 8px;
       position: absolute;
-      bottom: 0;
+      bottom: 1.2rem;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .dot {
-      width: 7px; height: 7px;
+      width: 8px; height: 8px;
       border-radius: 50%;
       background: rgba(255,255,255,.35);
       border: none;
@@ -203,69 +249,76 @@
       transform: scale(1.35);
     }
 
+    /* ── FROSTED GLASS ARROWS ── */
     .carousel-arrow {
+      display: flex;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 46px; height: 46px;
+      width: 38px; height: 38px;
       border-radius: 50%;
-      border: 2px solid rgba(255,255,255,.7);
-      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: #fff;
       font-size: 1.3rem;
       cursor: pointer;
-      display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: background .25s, border-color .25s, transform .25s;
     }
+    
     .carousel-arrow:hover {
-      background: rgba(255,255,255,.22);
-      border-color: #fff;
-      transform: translateY(-50%) scale(1.1);
+      background: rgba(255, 255, 255, 0.35);
+      border-color: rgba(255, 255, 255, 0.8);
+      transform: translateY(-50%) scale(1.08);
     }
     
-    .carousel-arrow.prev { left: 3rem; }
-    .carousel-arrow.next { right: 3rem; }
+    .carousel-arrow.prev { left: 0.5rem; }
+    .carousel-arrow.next { right: 0.5rem; }
 
     /* ── EXPLORE ── */
     .explore {
-      padding: 3rem 2.2rem 4rem;
+      padding: 3rem 1.5rem 4rem;
     }
 
     .explore h2 {
       font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 800;
       text-align: center;
-      margin-bottom: 2.2rem;
+      margin-bottom: 2.5rem;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
-      max-width: 900px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2.5rem;
+      max-width: 950px;
       margin: 0 auto;
+      justify-items: center;
     }
 
     .pcard {
       background: rgba(255, 255, 255, 0.14); 
       border-radius: 18px;
-      padding: 0 0 1rem;
+      padding: 0 0 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       cursor: pointer;
-      overflow: visible;
       position: relative;
       box-shadow: 
         inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
         0 10px 24px rgba(0, 0, 0, 0.18);
       transition: background .3s, transform .3s, box-shadow .3s;
-      width: 210px;
-      min-height: 240px;
+      width: 100%;
+      max-width: 260px;
+      min-height: 250px;
+      text-decoration: none;
     }
     .pcard:hover {
       background: rgba(255,255,255,.25);
@@ -275,107 +328,164 @@
 
     .pcard-img-wrap {
       width: 100%;
-      height: 160px;
+      height: 170px;
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
-      overflow: visible;
+      overflow: hidden;
+      border-radius: 18px 18px 0 0;
       position: relative;
     }
 
     .pcard-img-wrap img {
-      height: 180px;
-      width: auto;
-      object-fit: contain;
-      object-position: bottom;
-      margin-top: -20px;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,.18));
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
       transition: transform .35s;
     }
 
     .pcard:hover .pcard-img-wrap img {
-      transform: scale(1.08) translateY(-5px);
+      transform: scale(1.08);
     }
 
     .pcard-name {
-      font-size: 0.88rem;
-      font-weight: 500;
+      font-size: 0.95rem;
+      font-weight: 600;
       text-align: center;
       color: #fff;
-      padding: 0.6rem 0.8rem 0;
+      padding: 1rem 1rem 0;
       line-height: 1.35;
     }
 
     /* ── FOOTER ── */
     footer {
       background: #000;
-      padding: 2.8rem 2.2rem 1.8rem;
+      padding: 3rem 1.5rem 2rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem 2rem;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
     .footer-brand {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 0.6rem;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
     }
 
     .footer-addr {
-      font-size: 0.83rem;
+      font-size: 0.88rem;
       font-weight: 300;
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,.6);
       line-height: 1.65;
     }
 
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      align-items: flex-end;
-      justify-content: flex-start;
+      gap: 1.2rem;
+      align-items: flex-start;
     }
 
     .flink {
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #fff;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
       cursor: pointer;
       transition: opacity .2s;
     }
     .flink:hover { opacity: .65; }
 
-    .flink-ico {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .flink img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
     }
 
     .footer-credit {
-      grid-column: 1/-1;
-      text-align: right;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,.3);
-      padding-top: 0.8rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,.35);
+      padding-top: 1.5rem;
       border-top: 1px solid rgba(255,255,255,.08);
     }
-    .footer-credit a { color: rgba(255,255,255,.45); text-decoration: none; }
+    .footer-credit a { color: rgba(255,255,255,.5); text-decoration: none; }
 
-    @media (max-width: 640px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-      footer { grid-template-columns: 1fr; }
-      .footer-links { align-items: flex-start; }
-      .slide-img-col { width: 140px; height: 240px; }
-      .slide-img-col img { width: 130px; height: 210px; }
+    /* ── RESPONSIVE TABLETS & DESKTOPS BREAKPOINT ── */
+    @media (min-width: 768px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+      }
+      .nav-links {
+        width: auto;
+        overflow-x: visible;
+        white-space: normal;
+        padding: 0;
+        gap: 1.5rem;
+      }
+      .hero {
+        padding: 3rem 2.5rem 1rem;
+        text-align: left;
+      }
+      .hero p {
+        margin: 0;
+      }
+      .carousel-outer {
+        padding: 2rem 4rem;
+      }
+      .carousel-slide {
+        flex-direction: row;
+        grid-template-columns: 1fr auto;
+        display: grid;
+        padding: 3rem 4rem;
+        gap: 1.5rem;
+      }
+      .slide-body {
+        text-align: left;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+      }
+      .slide-img-col {
+        max-width: 320px;
+        height: 320px;
+        align-self: flex-end;
+        justify-content: flex-end;
+        padding-right: 1rem;
+      }
+      .carousel-arrow {
+        width: 44px; height: 44px;
+        font-size: 1.5rem;
+      }
+      .carousel-arrow.prev { left: 1rem; }
+      .carousel-arrow.next { right: 1rem; }
+
+      footer {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 4rem 2rem;
+      }
+      .footer-links {
+        align-items: flex-end;
+      }
+      .footer-credit {
+        grid-column: 1 / -1;
+        text-align: right;
+      }
     }
   </style>
 </head>
@@ -387,16 +497,17 @@
     The Flower Patch
   </div>
   
- <div class="nav-links">
-  <button onclick="window.location.href='index.html'" class="nav-item">Home</button>
-  <button onclick="window.location.href='roses.html'" class="nav-item">Roses</button>
-  <button onclick="window.location.href='mixedbouquets.html'" class="nav-item">Mixed Bouquets</button>
-  <button onclick="window.location.href='vasarrangements.html'" class="nav-item">Vase Arrangements</button>
-  <button onclick="window.location.href='special.html'" class="nav-item">Special Arrangements</button>
-  <button onclick="window.location.href='combos.html'" class="nav-item">Gift Combos</button>
-  <button onclick="window.location.href='funerals.html'" class="nav-item">Funerals</button>
-  <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="nav-item">Contact</button>
-</div>
+  <div class="nav-links">
+    <button onclick="window.location.href='index.html'" class="nav-item">Home</button>
+    <button onclick="window.location.href='roses.html'" class="nav-item">Roses</button>
+    <button onclick="window.location.href='mixedbouquets.html'" class="nav-item">Mixed Bouquets</button>
+    <button onclick="window.location.href='vasarrangements.html'" class="nav-item">Vase Arrangements</button>
+    <button onclick="window.location.href='special.html'" class="nav-item">Special Arrangements</button>
+    <button onclick="window.location.href='weddings.html'" class="nav-item">Weddings</button>
+    <button onclick="window.location.href='combos.html'" class="nav-item">Gift Combos</button>
+    <button onclick="window.location.href='funerals.html'" class="nav-item">Funerals</button>
+    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="nav-item">Contact</button>
+  </div>
 </nav>
 
 <section class="hero">
@@ -405,64 +516,93 @@
 </section>
 
 <section class="carousel-outer">
-  <button class="carousel-arrow prev" id="prevBtn">&#8249;</button>
-  <button class="carousel-arrow next" id="nextBtn">&#8250;</button>
-
   <div class="carousel-card">
+    <button class="carousel-arrow prev" id="prevBtn" aria-label="Previous Slide">&#8249;</button>
+    <button class="carousel-arrow next" id="nextBtn" aria-label="Next Slide">&#8250;</button>
+
     <div class="carousel-track" id="track">
 
+      <!-- Slide 1: Roses -->
       <div class="carousel-slide">
         <div class="slide-body">
-          <div class="slide-name">Dieffenbachia</div>
-          <div class="slide-subtitle">Vibrant Greenery &amp; Fresh Energy</div>
-          <div class="slide-desc">With its broad, broad-brimmed foliage and dense growth habit, the Dieffenbachia breathes life and fresh energy into any interior. Its lush, patterned leaves add a layer of natural texture that instantly softens a room and makes a house feel like a home</div>
-        </div>
-        <div class="slide-img-col">
-          <img src="Diffenbachia.png" alt="Dieffenbachia" loading="eager" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
-        </div>
-      </div>
-
-      <div class="carousel-slide">
-        <div class="slide-body">
-          <div class="slide-name">Classic Red Rose Bouquet</div>
+          <span class="slide-category">Roses</span>
+          <div class="slide-name">Lavender Dream Bouquet</div>
           <div class="slide-subtitle">Timeless Love &amp; Passion</div>
-          <div class="slide-desc">A stunning arrangement of hand-selected deep red roses, each one freshly cut and carefully wrapped. Perfect for expressing love, gratitude, or celebration — these roses make every moment unforgettable.</div>
+          <div class="slide-desc">Unique enchantment pastel tones thoughtfully balanced to deliver a modern sense of quiet luxury, texture, and elegant grace.</div>
+          <a href="roses.html#classic-red-rose" class="slide-btn">View Roses</a>
         </div>
         <div class="slide-img-col">
-          <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
+          <img src="Rose 2.jpeg" alt="Classic Red Rose Bouquet" loading="eager" />
         </div>
       </div>
 
+      <!-- Slide 2: Mixed Bouquets -->
       <div class="carousel-slide">
         <div class="slide-body">
-          <div class="slide-name">Rex Begonia</div>
-          <div class="slide-subtitle">Bold Colour &amp; Rich Texture</div>
-          <div class="slide-desc">The Rex Begonia is a showstopper with its vivid, jewel-toned foliage and intricate leaf patterns. Thrives in bright indirect light and brings bold colour and rich texture to any indoor space.</div>
-        </div>
-        <div class="slide-img-col">
-          <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
-        </div>
-      </div>
-
-      <div class="carousel-slide">
-        <div class="slide-body">
-          <div class="slide-name">White Avalanche Rose Bouquet</div>
-          <div class="slide-subtitle">Pure Elegance &amp; Grace</div>
-          <div class="slide-desc">Soft, creamy white roses gathered into a full, cloud-like bouquet. The White Avalanche rose is renowned for its large blooms and long vase life — a favourite for weddings and heartfelt gestures.</div>
-        </div>
-        <div class="slide-img-col">
-          <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
-        </div>
-      </div>
-
-      <div class="carousel-slide">
-        <div class="slide-body">
-          <div class="slide-name">Sunny Meadows Bouquet</div>
+          <span class="slide-category">Mixed Bouquets</span>
+          <div class="slide-name">Vibrant Sunrise Mixed Bouquet</div>
           <div class="slide-subtitle">Warmth &amp; Cheerful Energy</div>
-          <div class="slide-desc">A vibrant mix of sunflowers, white lilies, and seasonal blooms that captures the warmth of a summer meadow. This golden arrangement radiates positivity and makes a joyful statement in any space.</div>
+          <div class="slide-desc">A colorful medley featuring bright sunflowers, crisp white blooms, and fresh accent foliage bursting with life.</div>
+          <a href="mixedbouquets.html#vibrant-sunrise-mixed" class="slide-btn">Explore Bouquets</a>
         </div>
         <div class="slide-img-col">
-          <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" style="max-height: 100%; width: auto; position: relative; bottom: 0; right: 0;" onerror="this.style.fontSize='5rem'" />
+          <img src="Mixed Bouquet 2.jpeg" alt="Vibrant Sunrise Mixed Bouquet" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Slide 3: Vase Arrangements -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <span class="slide-category">Vase Arrangements</span>
+          <div class="slide-name">Golden Radiance Vase</div>
+          <div class="slide-subtitle">Refined Home &amp; Office Decor</div>
+          <div class="slide-desc">A bright, radiant combination of vibrant golden sunflowers, rich red velvet roses, delicate purple statice, and wild greenery in a tall cylinder glass vase.</div>
+          <a href="vasarrangements.html#lush-garden-glass-vase" class="slide-btn">View Vase Arrangements</a>
+        </div>
+        <div class="slide-img-col">
+          <img src="Vase 6.jpeg" alt="Lush Garden Glass Vase" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Slide 4: Special Arrangements -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <span class="slide-category">Special Arrangements</span>
+          <div class="slide-name">Majestic Tropical Oasis</div>
+          <div class="slide-subtitle">Bespoke &amp; Artisanal Design</div>
+          <div class="slide-desc">A grand-tier statement masterpiece combining towering orange birds of paradise, soft pastel pink gerberas, budding lilies, and deep red anthuriums blended over a dense base of rich ferns.</div>
+          <a href="special.html#signature-floral-box" class="slide-btn">Explore Special Designs</a>
+        </div>
+        <div class="slide-img-col">
+          <img src="Special Category 2.jpeg" alt="Signature Floral Box" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Slide 5: Gift Combos -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <span class="slide-category">Gift Combos</span>
+          <div class="slide-name">Fruit Basket &amp; Bloom</div>
+          <div class="slide-subtitle">Gourmet Refreshment &amp; Flowers</div>
+          <div class="slide-desc">A lavish woven basket packed with fresh seasonal fruits and savory treats, paired alongside a fresh bloom arrangement.</div>
+          <a href="combos.html#fruit-basket-bloom" class="slide-btn">Browse Gift Combos</a>
+        </div>
+        <div class="slide-img-col">
+          <img src="Fruit Basket and Bloom Combo.jpeg" alt="Fruit Basket & Bloom Combo" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Slide 6: Funerals -->
+      <div class="carousel-slide">
+        <div class="slide-body">
+          <span class="slide-category">Funeral Flowers</span>
+          <div class="slide-name">Full Casket Tribute Suite</div>
+          <div class="slide-subtitle">Honor &amp; Loving Memory</div>
+          <div class="slide-desc">A premium complete ceremonial setup, integrating cascading pure white floral mounds alongside a matching structured floral heart piece for a unified elegant presentation.</div>
+          <a href="funerals.html#serene-tribute-coffin-spray" class="slide-btn">View Funeral Tributes</a>
+        </div>
+        <div class="slide-img-col">
+          <img src="WhatsApp Image 2026-06-23 at 11.59.48 (2).jpeg" alt="Serene Tribute Coffin Spray" loading="lazy" />
         </div>
       </div>
 
@@ -473,88 +613,77 @@
 </section>
 
 <section class="explore" id="products">
-  <h2>Explore Flowers &amp; Plants</h2>
+  <h2>Explore Our Categories</h2>
 
   <div class="grid">
-
-    <div class="pcard">
+    <a href="roses.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Diffenbachia.png" alt="Dieffenbachia" loading="lazy" />
+        <img src="Rose 1.jpeg" alt="Roses Category" loading="lazy" />
       </div>
-      <p class="pcard-name">Dieffenbachia</p>
-    </div>
+      <p class="pcard-name">Roses</p>
+    </a>
 
-    <div class="pcard">
+    <a href="mixedbouquets.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rose Bouquet.png" alt="Classic Red Rose Bouquet" loading="lazy" style="height: 180px; width: auto; margin-top:-20px;" />
+        <img src="Mixed Bouquet 2.jpeg" alt="Mixed Bouquets Category" loading="lazy" />
       </div>
-      <p class="pcard-name">Classic Red Rose Bouquet</p>
-    </div>
+      <p class="pcard-name">Mixed Bouquets</p>
+    </a>
 
-    <div class="pcard">
+    <a href="vasarrangements.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Rex Begonia.png" alt="Rex Begonia" loading="lazy" style="height: 180px; width: auto; margin-top:-20px;" />
+        <img src="Vase 2.jpeg" alt="Vase Arrangements Category" loading="lazy" />
       </div>
-      <p class="pcard-name">Rex Begonia</p>
-    </div>
+      <p class="pcard-name">Vase Arrangements</p>
+    </a>
 
-    <div class="pcard">
+    <a href="special.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="White Rose.png" alt="White Avalanche Rose Bouquet" loading="lazy" />
+        <img src="Special Category 1.jpeg" alt="Special Arrangements Category" loading="lazy" />
       </div>
-      <p class="pcard-name">White Avalanche Rose Bouquet</p>
-    </div>
+      <p class="pcard-name">Special Arrangements</p>
+    </a>
 
-    <div class="pcard">
+    <a href="combos.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Calathea.png" alt="Calathea" loading="lazy" />
+        <img src="Fruit Basket and Bloom Combo.jpeg" alt="Gift Combos Category" loading="lazy" />
       </div>
-      <p class="pcard-name">Calathea</p>
-    </div>
+      <p class="pcard-name">Gift Combos</p>
+    </a>
 
-    <div class="pcard">
+    <a href="funerals.html" class="pcard">
       <div class="pcard-img-wrap">
-        <img src="Sunny Meadows.png" alt="Sunny Meadows Bouquet" loading="lazy" />
+        <img src="WhatsApp Image 2026-06-23 at 11.59.48 (2).jpeg" alt="Funerals Category" loading="lazy" />
       </div>
-      <p class="pcard-name">Sunny Meadows Bouquet</p>
-    </div>
-
+      <p class="pcard-name">Funeral Flowers</p>
+    </a>
   </div>
 </section>
 
 <footer id="contact">
   <div>
-    <div class="footer-brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
-      <img src="FlowerPatch Icon.png" 
-           alt="Logo" 
-           class="nav-brand-img" 
-           style="width: 40px; height: 40px; object-fit: cover; align-self: center; position: relative; right: 8px;"/>
-      <span style="font-weight: 600; font-size: 1.2rem; display: inline-block; position: relative; top: 10px; right: 8px;">The Flower Patch</span>
+    <div class="footer-brand">
+      <img src="FlowerPatch Icon.png" alt="Logo" />
+      <span>The Flower Patch</span>
     </div>
     <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
   </div>
 
-  <div class="footer-links" style="display: flex; flex-direction: column; gap: 15px;">
-    
-    <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white;">
-      <span class="flink-ico">
-        <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
-      </span>
-      <span style="position: relative; top: 2px;">the_flowerpatch_byo</span>
+  <div class="footer-links">
+    <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank">
+      <img src="insta icon.png" alt="Instagram" />
+      <span>the_flowerpatch_byo</span>
     </a>
 
-    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white; position: relative; right: 21px;">
-      <span class="flink-ico">
-        <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px; position: relative; right: 6px;" />
-      </span>
-      <span style="position: relative; top: 1px;">The Flower Patch</span>
+    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank">
+      <img src="fbicon.png" alt="Facebook" />
+      <span>The Flower Patch</span>
     </a>
 
-    <a class="flink" href="tel:+263771950162" style="display: flex; align-items: center; gap: 12px; text-decoration: underline; color: white; position: relative; right: 21px;">
-      <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
-      <span style="position: relative; top: 1px;">+263 77 195 0162</span>
+    <a class="flink" href="tel:+263771950162">
+      <img src="phone icon.webp" alt="Call" />
+      <span>+263 77 195 0162</span>
     </a>
-
   </div>
 
   <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
