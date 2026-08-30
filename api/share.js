@@ -144,11 +144,43 @@ export default function handler(req, res) {
       desc: 'A charming tall-handled wicker basket packed with vibrant fresh fruits paired with juice and wrapped with a pink bow.',
       img: 'https://www.flowerpatchbyo.com/Combo%202.jpeg',
       page: 'combos.html'
+    },
+
+    // Funeral Collection
+    'easel-spray': {
+      title: 'Easel Stand Spray - The Flower Patch',
+      desc: 'An outstanding exhibition setup displaying radiant gold sunflowers, premium lilies, and mixed seasonal white filler blooms built to bring light and honor onto chapels.',
+      img: 'https://www.flowerpatchbyo.com/WhatsApp%20Image%202026-06-23%20at%2011.59.48.jpeg',
+      page: 'funerals.html'
+    },
+    'casket-tribute': {
+      title: 'Full Casket Tribute Suite - The Flower Patch',
+      desc: 'A premium complete ceremonial setup, integrating cascading pure white floral mounds alongside a matching structured floral heart piece for a unified elegant presentation.',
+      img: 'https://www.flowerpatchbyo.com/jul.png',
+      page: 'funerals.html'
+    },
+    'memorial-wreath': {
+      title: 'Classic Memorial Wreath - The Flower Patch',
+      desc: "A beautiful ring-shaped tribute featuring vibrant yellow chrysanthemums, alternating deep maroon carnations, and fresh delicate baby's breath accents.",
+      img: 'https://www.flowerpatchbyo.com/WhatsApp%20Image%202026-06-23%20at%2011.59.48%20(1).jpeg',
+      page: 'funerals.html'
+    },
+    'white-wreath': {
+      title: 'Pure White Memorial Wreath - The Flower Patch',
+      desc: 'An elegant circular wreath crafted with dense white chrysanthemums, capped with a prominent crest of white lilies and lush green foliage.',
+      img: 'https://www.flowerpatchbyo.com/Funeral%204.jpeg',
+      page: 'funerals.html'
+    },
+    'graceful-serenade-spray': {
+      title: 'Graceful Serenade Stand Spray - The Flower Patch',
+      desc: "An elegant vertical easel display featuring soft blush roses, delicate white arum lilies, deep magenta chrysanthemums, and airy baby's breath greenery.",
+      img: 'https://www.flowerpatchbyo.com/Fune4.jpeg',
+      page: 'funerals.html'
     }
   };
 
-  const selected = items[item] || items['fruit-basket-bloom'];
-  const redirectPage = selected.page || 'combos.html';
+  const selected = items[item] || items['casket-tribute'];
+  const redirectPage = selected.page || 'funerals.html';
 
   res.setHeader('Content-Type', 'text/html');
   res.status(200).send(`
