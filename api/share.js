@@ -1,505 +1,210 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vase Arrangements - The Flower Patch</title>
+export default function handler(req, res) {
+  const { item } = req.query;
 
-  <!-- Open Graph / WhatsApp Preview Meta Tags -->
-  <meta property="og:site_name" content="The Flower Patch" />
-  <meta property="og:title" content="Vase Arrangements - The Flower Patch" />
-  <meta property="og:description" content="Elevate your space instantly. Our curated vase and luxury display collections combine seasonal blooms and expert composition, delivered pre-arranged and ready to centerpiece any room." />
-  <meta property="og:image" content="https://www.flowerpatchbyo.com/Vase%201.jpeg" />
-  <meta property="og:url" content="https://www.flowerpatchbyo.com/vasarrangements.html" />
-  <meta property="og:type" content="website" />
+  const items = {
+    // Roses Collection
+    'bright-yellow': {
+      title: 'Bright Yellow Bouquet - The Flower Patch',
+      desc: 'Radiant sunshine blooms carefully bundled to provide bright, energetic warmth.',
+      img: 'https://www.flowerpatchbyo.com/Rose%201.jpeg',
+      page: 'roses.html'
+    },
+    'lavender-dream': {
+      title: 'Lavender Dream Bouquet - The Flower Patch',
+      desc: 'Unique enchantment pastel tones thoughtfully balanced to deliver modern luxury.',
+      img: 'https://www.flowerpatchbyo.com/Rose%202.jpeg',
+      page: 'roses.html'
+    },
+    'vintage-blush': {
+      title: 'Vintage Blush Bouquet - The Flower Patch',
+      desc: 'Classic dual-tone pink-tipped petals structured in a clean composition.',
+      img: 'https://www.flowerpatchbyo.com/Rose%203.jpeg',
+      page: 'roses.html'
+    },
+    'green-tea': {
+      title: 'Green Tea Bouquet - The Flower Patch',
+      desc: 'Soft, organic pastel green layers offering distinctive tonal variance.',
+      img: 'https://www.flowerpatchbyo.com/Rose%204.jpeg',
+      page: 'roses.html'
+    },
+    'sunshine-meadow': {
+      title: 'Sunshine Meadow Bouquet - The Flower Patch',
+      desc: 'Bright golden sunflowers, yellow spray chrysanthemums, and airy gypsophila.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%201.jpeg',
+      page: 'roses.html'
+    },
+    'velvet-majesty': {
+      title: 'Velvet Majesty - The Flower Patch',
+      desc: 'Soft dusty-pink and blush roses intertwined with vibrant purple thistle accents.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%205.jpeg',
+      page: 'roses.html'
+    },
 
-  <link rel="icon" type="image/png" href="FlowerPatch Icon.png" />
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    // Mixed Bouquets Collection
+    'pastel-harmony': {
+      title: 'Pastel Harmony Bouquet - The Flower Patch',
+      desc: 'Soft blush carnations, cream lilies, and pale peach spray roses delicately combined.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%202.jpeg',
+      page: 'mixedbouquets.html'
+    },
+    'exotic-bliss': {
+      title: 'Exotic Bliss Bouquet - The Flower Patch',
+      desc: 'Regal proteas, red hypericum berries, and vibrant gerberas balanced with lush tropical greens.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%203.jpeg',
+      page: 'mixedbouquets.html'
+    },
+    'garden-romance': {
+      title: 'Garden Romance Bouquet - The Flower Patch',
+      desc: 'Lush mixed garden roses bundled alongside deep purple statice and white alstroemeria.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%204.jpeg',
+      page: 'mixedbouquets.html'
+    },
+    'twilight-charm': {
+      title: 'Pure Serenity Arrangement - The Flower Patch',
+      desc: 'Pristine white gerberas, chrysanthemums, and fresh green lily buds woven with delicate baby’s breath.',
+      img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%206.jpeg',
+      page: 'mixedbouquets.html'
+    },
 
-    html {
-      scroll-behavior: smooth;
+    // Vase Arrangements Collection
+    'pastel-meadow-vase': {
+      title: 'Pastel Meadow Vase - The Flower Patch',
+      desc: 'Bright magenta chrysanthemums, peach and cream daisies, soft pink filler sprays set in a classic glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%201.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'azure-mist-display': {
+      title: 'Azure Mist Display - The Flower Patch',
+      desc: 'White lilies, soft cream blooms, and deep green leaves framed by a cloud of indigo and white baby’s breath.',
+      img: 'https://www.flowerpatchbyo.com/Vase%202.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'sunset-harvest-vase': {
+      title: 'Sunset Harvest Vase - The Flower Patch',
+      desc: 'Massive orange gerbera daisy centerpiece paired with soft yellow carnations and crimson hypericum berries.',
+      img: 'https://www.flowerpatchbyo.com/Vase%203.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'majestic-white-box': {
+      title: 'Majestic White Hatbox - The Flower Patch',
+      desc: 'Ultra-premium display of white gerberas, dense chrysanthemums, and green lilies in a luxury hatbox.',
+      img: 'https://www.flowerpatchbyo.com/Vase%204.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'orchid-tulip-delight': {
+      title: 'Orchid & Tulip Delight - The Flower Patch',
+      desc: 'Deep purple orchids, vivid orange tulips, vibrant hot pink gerberas in a flared glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%205.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'golden-radiance-vase': {
+      title: 'Golden Radiance Vase - The Flower Patch',
+      desc: 'Golden sunflowers, rich red velvet roses, delicate purple statice in a tall cylinder glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%206.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'blush-magenta-elegance': {
+      title: 'Blush & Magenta Elegance - The Flower Patch',
+      desc: 'Soft pink ranunculus paired with hot pink gerbera daisies, deep plum chrysanthemums, delicate statice, and fresh greenery arranged in a clear spiral glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vas%207.jpeg',
+      page: 'vasarrangements.html'
+    },
+
+    // Special Arrangements Collection
+    'majestic-tropical-oasis': {
+      title: 'Majestic Tropical Oasis - The Flower Patch',
+      desc: 'Grand-tier masterpiece combining towering orange birds of paradise, soft pink gerberas, budding lilies, and anthuriums.',
+      img: 'https://www.flowerpatchbyo.com/Special%20Category%202.jpeg',
+      page: 'special.html'
+    },
+    'crimson-safari-tower': {
+      title: 'Crimson Safari Tower - The Flower Patch',
+      desc: 'Fiery vertical presentation layering orange birds of paradise, deep crimson gerberas, and magenta anthuriums.',
+      img: 'https://www.flowerpatchbyo.com/Special%20Category%201.jpeg',
+      page: 'special.html'
+    },
+    'vibrant-sunset-bloom': {
+      title: 'Vibrant Sunset Bloom - The Flower Patch',
+      desc: 'Towering triangular arrangement featuring orange roses, birds of paradise, red gerberas, and pincushion proteas.',
+      img: 'https://www.flowerpatchbyo.com/SA3.jpeg',
+      page: 'special.html'
+    },
+
+    // Wedding Collection
+    'cascading-bridal-bouquet': {
+      title: 'Cascading Bridal Bouquet - The Flower Patch',
+      desc: 'An extraordinary, dramatic cascade featuring pristine white calla lilies, tender cream roses, baby’s breath, and deep green foliage.',
+      img: 'https://www.flowerpatchbyo.com/Wedding%20item%201.jpeg',
+      page: 'weddings.html'
+    },
+
+    // Gift Combos Collection
+    'fruit-basket-bloom': {
+      title: 'Fruit Basket & Bloom - The Flower Patch',
+      desc: 'A premium woven basket loaded with fresh seasonal fruits, creamy yogurts, and select savory treats paired with a vibrant mixed bloom bouquet.',
+      img: 'https://www.flowerpatchbyo.com/Fruit%20Basket%20and%20Bloom%20Combo.jpeg',
+      page: 'combos.html'
+    },
+    'fresh-harvest-basket': {
+      title: 'Fresh Harvest Basket - The Flower Patch',
+      desc: 'A charming tall-handled wicker basket packed with vibrant fresh fruits paired with juice and wrapped with a pink bow.',
+      img: 'https://www.flowerpatchbyo.com/Combo%202.jpeg',
+      page: 'combos.html'
+    },
+
+    // Funeral Collection
+    'easel-spray': {
+      title: 'Easel Stand Spray - The Flower Patch',
+      desc: 'An outstanding exhibition setup displaying radiant gold sunflowers, premium lilies, and mixed seasonal white filler blooms built to bring light and honor onto chapels.',
+      img: 'https://www.flowerpatchbyo.com/WhatsApp%20Image%202026-06-23%20at%2011.59.48.jpeg',
+      page: 'funerals.html'
+    },
+    'casket-tribute': {
+      title: 'Full Casket Tribute Suite - The Flower Patch',
+      desc: 'A premium complete ceremonial setup, integrating cascading pure white floral mounds alongside a matching structured floral heart piece for a unified elegant presentation.',
+      img: 'https://www.flowerpatchbyo.com/jul.png',
+      page: 'funerals.html'
+    },
+    'memorial-wreath': {
+      title: 'Classic Memorial Wreath - The Flower Patch',
+      desc: "A beautiful ring-shaped tribute featuring vibrant yellow chrysanthemums, alternating deep maroon carnations, and fresh delicate baby's breath accents.",
+      img: 'https://www.flowerpatchbyo.com/WhatsApp%20Image%202026-06-23%20at%2011.59.48%20(1).jpeg',
+      page: 'funerals.html'
+    },
+    'white-wreath': {
+      title: 'Pure White Memorial Wreath - The Flower Patch',
+      desc: 'An elegant circular wreath crafted with dense white chrysanthemums, capped with a prominent crest of white lilies and lush green foliage.',
+      img: 'https://www.flowerpatchbyo.com/Funeral%204.jpeg',
+      page: 'funerals.html'
+    },
+    'graceful-serenade-spray': {
+      title: 'Graceful Serenade Stand Spray - The Flower Patch',
+      desc: "An elegant vertical easel display featuring soft blush roses, delicate white arum lilies, deep magenta chrysanthemums, and airy baby's breath greenery.",
+      img: 'https://www.flowerpatchbyo.com/Fune4.jpeg',
+      page: 'funerals.html'
     }
+  };
 
-    body {
-      background: url('Vas bg.png') no-repeat center center / cover;
-      color: #fff;
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+  const selected = items[item] || items['blush-magenta-elegance'];
+  const redirectPage = selected.page || 'vasarrangements.html';
 
-    /* ── NAV ── */
-    nav {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.2rem;
-      padding: 1.5rem 1.5rem;
-      position: relative;
-      z-index: 50;
-    }
-
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 1.2rem;
-      font-weight: 700;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-    }
-    
-    .nav-brand a {
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-    }
-    
-    .nav-brand-img {
-      height: 1.6rem;
-      width: auto;
-      object-fit: contain;
-      display: inline-block;
-      filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.25));
-    }
-
-    .nav-links {
-      display: flex;
-      width: 100%;
-      overflow-x: auto;
-      white-space: nowrap;
-      gap: 1.2rem;
-      padding: 0.5rem 0.2rem 0.8rem;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .nav-links::-webkit-scrollbar {
-      display: none;
-    }
-
-    .nav-item {
-      font-size: 0.88rem;
-      font-weight: 500;
-      color: #fff;
-      text-decoration: none;
-      transition: opacity .2s;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
-      padding: 0;
-      flex-shrink: 0;
-    }
-    .nav-item:hover { opacity: .65; }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 2rem 1.5rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: clamp(2.3rem, 7vw, 4.5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-      text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
-    }
-
-    .hero p {
-      font-size: 0.95rem;
-      font-weight: 300;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 650px;
-      line-height: 1.7;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-      margin: 0 auto;
-    }
-
-    /* ── SELECTION GRID ── */
-    .explore {
-      padding: 2rem 1.5rem 4rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 2.5rem;
-      max-width: 950px;
-      margin: 0 auto;
-      justify-items: center;
-    }
-
-    .pcard {
-      background: rgba(255, 255, 255, 0.14); 
-      border-radius: 18px;
-      padding: 0 0 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      position: relative;
-      box-shadow: 
-        inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
-        0 10px 24px rgba(0, 0, 0, 0.18);
-      transition: background .3s, transform .3s, box-shadow .3s;
-      width: 100%;
-      max-width: 280px;
-      min-height: 400px;
-      scroll-margin-top: 2rem;
-    }
-    
-    .pcard:hover {
-      background: rgba(255,255,255,.25);
-      transform: translateY(-5px);
-      box-shadow: 0 18px 40px rgba(0,0,0,.15);
-    }
-
-    .pcard-img-wrap {
-      width: 100%;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      border-radius: 18px 18px 0 0;
-      position: relative;
-      background: rgba(0,0,0,0.1);
-    }
-
-    .pcard-img-wrap img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-      transition: transform .35s;
-    }
-
-    .pcard:hover .pcard-img-wrap img {
-      transform: scale(1.05);
-    }
-
-    .pcard-name {
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-align: center;
-      color: #ffffff;
-      padding: 1.2rem 0.8rem 0.4rem;
-      line-height: 1.35;
-    }
-
-    .pcard-desc {
-      font-size: 0.78rem;
-      font-weight: 300;
-      text-align: center;
-      color: rgba(255, 255, 255, 0.85);
-      padding: 0 1.2rem 1rem;
-      line-height: 1.45;
-    }
-
-    .pcard-price {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-top: auto;
-      padding: 0.5rem 0 0.4rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
-    }
-
-    .pcard-btn {
-      display: inline-block;
-      text-align: center;
-      text-decoration: none;
-      background: #fff;
-      color: #c07ab0;
-      border: none;
-      border-radius: 20px;
-      padding: 0.6rem 1.4rem;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: auto;
-      width: 85%;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: background 0.2s, transform 0.2s, color 0.2s;
-    }
-
-    .pcard-btn:hover {
-      background: #000;
-      color: #fff;
-      transform: scale(1.02);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: #000;
-      padding: 3rem 1.5rem 2rem;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-      margin-top: auto;
-      color: #fff;
-    }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 1.4rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 0.8rem;
-    }
-
-    .footer-brand img {
-      width: 35px;
-      height: 35px;
-      object-fit: contain;
-    }
-
-    .footer-addr {
-      font-size: 0.88rem;
-      font-weight: 300;
-      color: rgba(255,255,255,.6);
-      line-height: 1.65;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      align-items: flex-start;
-    }
-
-    .flink {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.9rem;
-      color: #fff;
-      text-decoration: underline;
-      text-underline-offset: 4px;
-      cursor: pointer;
-      transition: opacity .2s;
-    }
-    .flink:hover { opacity: .65; }
-
-    .flink-ico {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .flink img {
-      width: 22px;
-      height: 22px;
-      object-fit: contain;
-    }
-
-    .footer-credit {
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,.35);
-      padding-top: 1.5rem;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    .footer-credit a { color: rgba(255,255,255,.5); text-decoration: none; }
-
-    /* ── RESPONSIVE TABLETS & DESKTOPS BREAKPOINT ── */
-    @media (min-width: 768px) {
-      nav {
-        flex-direction: row;
-        justify-content: space-between;
-        padding: 1.5rem 2.5rem;
-      }
-      .nav-links {
-        width: auto;
-        overflow-x: visible;
-        white-space: normal;
-        padding: 0;
-        gap: 1.5rem;
-      }
-      .hero {
-        padding: 3rem 2.5rem 1rem;
-        text-align: left;
-      }
-      .hero p {
-        margin: 0;
-      }
-      .explore {
-        padding: 2rem 2.5rem 4rem;
-      }
-      footer {
-        grid-template-columns: 1fr 1fr;
-        padding: 3rem 4rem 2rem;
-      }
-      .footer-links {
-        align-items: flex-end;
-      }
-      .footer-credit {
-        grid-column: 1 / -1;
-        text-align: right;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<nav>
-  <div class="nav-brand">
-    <a href="index.html">
-      <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" />
-      The Flower Patch
-    </a>
-  </div>
-  
-  <div class="nav-links">
-    <button onclick="window.location.href='index.html'" class="nav-item">Home</button>
-    <button onclick="window.location.href='roses.html'" class="nav-item">Roses</button>
-    <button onclick="window.location.href='mixedbouquets.html'" class="nav-item">Mixed Bouquets</button>
-    <button onclick="window.location.href='vasarrangements.html'" class="nav-item">Vase Arrangements</button>
-    <button onclick="window.location.href='special.html'" class="nav-item">Special Arrangements</button>
-    <button onclick="window.location.href='weddings.html'" class="nav-item">Weddings</button>
-    <button onclick="window.location.href='combos.html'" class="nav-item">Gift Combos</button>
-    <button onclick="window.location.href='funerals.html'" class="nav-item">Funerals</button>
-    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" class="nav-item">Contact</button>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1>Elegant Vase Arrangements</h1>
-  <p>Elevate your space instantly. Our curated vase and luxury display collections combine seasonal blooms and expert composition, delivered pre-arranged and ready to centerpiece any room.</p>
-</section>
-
-<section class="explore">
-  <div class="grid">
-
-    <!-- Arrangement 1 -->
-    <div class="pcard" id="pastel-meadow-vase">
-      <div class="pcard-img-wrap">
-        <img src="Vase 1.jpeg" alt="Pastel Meadow Glass Vase Arrangement" loading="lazy" />
-      </div>
-      <p class="pcard-name">Pastel Meadow Vase</p>
-      <p class="pcard-desc">A lively mix featuring bright magenta chrysanthemums, peach and cream daisies, soft pink filler sprays, and emerging lilies set in a classic clear glass swirl vase.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Pastel%20Meadow%20Vase%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dpastel-meadow-vase" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 2 -->
-    <div class="pcard" id="azure-mist-display">
-      <div class="pcard-img-wrap">
-        <img src="Vase 2.jpeg" alt="Azure Mist Ceramic Vase Arrangement" loading="lazy" />
-      </div>
-      <p class="pcard-name">Azure Mist Display</p>
-      <p class="pcard-desc">A stunning architectural composition of white lilies, soft cream focal blooms, and deep green leaves framed beautifully by a wide cloud of delicate indigo and white baby's breath.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Azure%20Mist%20Display%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dazure-mist-display" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 3 -->
-    <div class="pcard" id="sunset-harvest-vase">
-      <div class="pcard-img-wrap">
-        <img src="Vase 3.jpeg" alt="Sunset Harvest Cylinder Vase Arrangement" loading="lazy" />
-      </div>
-      <p class="pcard-name">Sunset Harvest Vase</p>
-      <p class="pcard-desc">Warm, rich tones featuring a massive orange gerbera daisy centerpiece paired with soft yellow carnations, rustic golden chrysanthemums, and crimson hypericum berries.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Sunset%20Harvest%20Vase%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dsunset-harvest-vase" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 4 -->
-    <div class="pcard" id="majestic-white-box">
-      <div class="pcard-img-wrap">
-        <img src="Vase 4.jpeg" alt="Majestic White Luxury Hatbox Arrangement" loading="lazy" />
-      </div>
-      <p class="pcard-name">Majestic White Hatbox</p>
-      <p class="pcard-desc">An ultra-premium display combining huge white gerberas, dense white chrysanthemums, emerging green lilies, and sprawling eucalyptus structure in a luxury black-and-white hatbox.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Majestic%20White%20Hatbox%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dmajestic-white-box" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 5 -->
-    <div class="pcard" id="orchid-tulip-delight">
-      <div class="pcard-img-wrap">
-        <img src="Vase 5.jpeg" alt="Orchid & Tulip Delight Glass Vase" loading="lazy" />
-      </div>
-      <p class="pcard-name">Orchid & Tulip Delight</p>
-      <p class="pcard-desc">An exotic, colorful ensemble of deep purple orchids, vivid orange tulips, vibrant hot pink gerberas, and soft pastel accents in a flared glass vase.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Orchid%20%26%20Tulip%20Delight%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dorchid-tulip-delight" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 6 -->
-    <div class="pcard" id="golden-radiance-vase">
-      <div class="pcard-img-wrap">
-        <img src="Vase 6.jpeg" alt="Golden Radiance Sunflower Vase" loading="lazy" />
-      </div>
-      <p class="pcard-name">Golden Radiance Vase</p>
-      <p class="pcard-desc">A bright, radiant combination of vibrant golden sunflowers, rich red velvet roses, delicate purple statice, and wild greenery in a tall cylinder glass vase.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Golden%20Radiance%20Vase%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dgolden-radiance-vase" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-    <!-- Arrangement 7 -->
-    <div class="pcard" id="blush-magenta-elegance">
-      <div class="pcard-img-wrap">
-        <img src="Vas 7.jpeg" alt="Blush & Magenta Elegance Glass Vase" loading="lazy" />
-      </div>
-      <p class="pcard-name">Blush &amp; Magenta Elegance</p>
-      <p class="pcard-desc">Soft pink ranunculus paired with hot pink gerbera daisies, deep plum chrysanthemums, delicate statice, and fresh greenery arranged in a clear spiral glass vase.</p>
-
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Blush%20%26%20Magenta%20Elegance%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dblush-magenta-elegance" target="_blank" class="pcard-btn">Enquire Now</a>
-    </div>
-
-  </div>
-</section>
-
-<footer id="contact">
-  <div>
-    <div class="footer-brand">
-      <img src="FlowerPatch Icon.png" alt="Logo" />
-      <span>The Flower Patch</span>
-    </div>
-    <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
-  </div>
-
-  <div class="footer-links">
-    <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank">
-      <div class="flink-ico">
-        <img src="insta icon.png" alt="Instagram" />
-      </div>
-      <span>the_flowerpatch_byo</span>
-    </a>
-
-    <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank">
-      <div class="flink-ico">
-        <img src="fbicon.png" alt="Facebook" />
-      </div>
-      <span>The Flower Patch</span>
-    </a>
-
-    <a class="flink" href="tel:+263771950162">
-      <div class="flink-ico">
-        <img src="phone icon.webp" alt="Call" />
-      </div>
-      <span>+263 77 195 0162</span>
-    </a>
-  </div>
-
-  <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
-</footer>
-
-</body>
-</html>
+  res.setHeader('Content-Type', 'text/html');
+  res.status(200).send(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>${selected.title}</title>
+      <meta property="og:site_name" content="The Flower Patch" />
+      <meta property="og:title" content="${selected.title}" />
+      <meta property="og:description" content="${selected.desc}" />
+      <meta property="og:image" content="${selected.img}" />
+      <meta property="og:type" content="website" />
+      <meta http-equiv="refresh" content="0;url=https://www.flowerpatchbyo.com/${redirectPage}#${item}">
+    </head>
+    <body>
+      <p>Redirecting to ${selected.title}...</p>
+    </body>
+    </html>
+  `);
+}
