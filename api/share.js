@@ -130,11 +130,25 @@ export default function handler(req, res) {
       desc: 'An extraordinary, dramatic cascade featuring pristine white calla lilies, tender cream roses, baby’s breath, and deep green foliage.',
       img: 'https://www.flowerpatchbyo.com/Wedding%20item%201.jpeg',
       page: 'weddings.html'
+    },
+
+    // Gift Combos Collection
+    'fruit-basket-bloom': {
+      title: 'Fruit Basket & Bloom - The Flower Patch',
+      desc: 'A premium woven basket loaded with fresh seasonal fruits, creamy yogurts, and select savory treats paired with a vibrant mixed bloom bouquet.',
+      img: 'https://www.flowerpatchbyo.com/Fruit%20Basket%20and%20Bloom%20Combo.jpeg',
+      page: 'combos.html'
+    },
+    'fresh-harvest-basket': {
+      title: 'Fresh Harvest Basket - The Flower Patch',
+      desc: 'A charming tall-handled wicker basket packed with vibrant fresh fruits paired with juice and wrapped with a pink bow.',
+      img: 'https://www.flowerpatchbyo.com/Combo%202.jpeg',
+      page: 'combos.html'
     }
   };
 
-  const selected = items[item] || items['cascading-bridal-bouquet'];
-  const redirectPage = selected.page || 'weddings.html';
+  const selected = items[item] || items['fruit-basket-bloom'];
+  const redirectPage = selected.page || 'combos.html';
 
   res.setHeader('Content-Type', 'text/html');
   res.status(200).send(`
