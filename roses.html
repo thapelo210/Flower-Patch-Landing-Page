@@ -5,67 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Roses Collection - The Flower Patch</title>
 
-  <!-- Open Graph / WhatsApp Preview Meta Tags (Default fallbacks) -->
+  <!-- Default Open Graph / Meta Fallbacks -->
   <meta property="og:site_name" content="The Flower Patch" />
   <meta property="og:title" content="Roses Collection - The Flower Patch" />
   <meta property="og:description" content="Express timeless emotion with our curated collections of standard-setting roses." />
   <meta property="og:image" content="https://www.flowerpatchbyo.com/Rose%201.jpeg" />
   <meta property="og:url" content="https://www.flowerpatchbyo.com/roses.html" />
   <meta property="og:type" content="website" />
-
-  <!-- Dynamic Open Graph Meta Script -->
-  <script>
-    const bouquetData = {
-      'bright-yellow': {
-        title: 'Bright Yellow Bouquet - The Flower Patch',
-        desc: 'Radiant sunshine blooms carefully bundled to provide bright, energetic warmth.',
-        img: 'https://www.flowerpatchbyo.com/Rose%201.jpeg'
-      },
-      'lavender-dream': {
-        title: 'Lavender Dream Bouquet - The Flower Patch',
-        desc: 'Unique enchantment pastel tones thoughtfully balanced to deliver modern luxury.',
-        img: 'https://www.flowerpatchbyo.com/Rose%202.jpeg'
-      },
-      'vintage-blush': {
-        title: 'Vintage Blush Bouquet - The Flower Patch',
-        desc: 'Classic dual-tone pink-tipped petals structured in a clean composition.',
-        img: 'https://www.flowerpatchbyo.com/Rose%203.jpeg'
-      },
-      'green-tea': {
-        title: 'Green Tea Bouquet - The Flower Patch',
-        desc: 'Soft, organic pastel green layers offering distinctive tonal variance.',
-        img: 'https://www.flowerpatchbyo.com/Rose%204.jpeg'
-      },
-      'sunshine-meadow': {
-        title: 'Sunshine Meadow Bouquet - The Flower Patch',
-        desc: 'Bright golden sunflowers, yellow spray chrysanthemums, and airy gypsophila.',
-        img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%201.jpeg'
-      },
-      'velvet-majesty': {
-        title: 'Velvet Majesty - The Flower Patch',
-        desc: 'Soft dusty-pink and blush roses intertwined with vibrant purple thistle accents.',
-        img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%205.jpeg'
-      }
-    };
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedItem = urlParams.get('item');
-
-    if (selectedItem && bouquetData[selectedItem]) {
-      const data = bouquetData[selectedItem];
-
-      document.title = data.title;
-      document.querySelector('meta[property="og:title"]').setAttribute('content', data.title);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', data.desc);
-      document.querySelector('meta[property="og:image"]').setAttribute('content', data.img);
-      document.querySelector('meta[property="og:url"]').setAttribute('content', window.location.href);
-
-      window.addEventListener('DOMContentLoaded', () => {
-        const el = document.getElementById(selectedItem);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      });
-    }
-  </script>
 
   <link rel="icon" type="image/png" href="FlowerPatch Icon.png" />
   
@@ -371,7 +317,7 @@
     }
     .footer-credit a { color: rgba(255,255,255,.5); text-decoration: none; }
 
-    /* ── RESPONSIVE TABLETS & DESKTOPS BREAKPOINT ── */
+    /* ── RESPONSIVE BREAKPOINT ── */
     @media (min-width: 768px) {
       nav {
         flex-direction: row;
@@ -448,7 +394,7 @@
       <p class="pcard-name">Bright Yellow Bouquet</p>
       <p class="pcard-desc">Radiant sunshine blooms carefully bundled to provide bright, energetic warmth and celebrate authentic connections and joy.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Bright%20Yellow%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dbright-yellow" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Bright%20Yellow%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dbright-yellow" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
     <!-- Card 2 -->
@@ -459,7 +405,7 @@
       <p class="pcard-name">Lavender Dream Bouquet</p>
       <p class="pcard-desc">Unique enchantment pastel tones thoughtfully balanced to deliver a modern sense of quiet luxury, texture, and elegant grace.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Lavender%20Dream%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dlavender-dream" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Lavender%20Dream%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dlavender-dream" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
     <!-- Card 3 -->
@@ -470,7 +416,7 @@
       <p class="pcard-name">Vintage Blush Bouquet</p>
       <p class="pcard-desc">Classic dual-tone pink-tipped petals structured in a clean composition, offering a timeless, nostalgic, and romantic charm.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Vintage%20Blush%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dvintage-blush" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Vintage%20Blush%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dvintage-blush" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
     <!-- Card 4 -->
@@ -481,7 +427,7 @@
       <p class="pcard-name">Green Tea Bouquet</p>
       <p class="pcard-desc">Soft, organic pastel green layers offering distinctive tonal variance and bringing crisp, minimalist modern vibes to any space.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Green%20Tea%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dgreen-tea" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Green%20Tea%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dgreen-tea" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
     <!-- Card 5 -->
@@ -492,7 +438,7 @@
       <p class="pcard-name">Sunshine Meadow Bouquet</p>
       <p class="pcard-desc">A cheerful arrangement featuring bright golden sunflowers, yellow spray chrysanthemums, and airy gypsophila wrapped in natural kraft paper.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Sunshine%20Meadow%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dsunshine-meadow" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Sunshine%20Meadow%20Bouquet%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dsunshine-meadow" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
     <!-- Card 6 -->
@@ -503,7 +449,7 @@
       <p class="pcard-name">Velvet Majesty</p>
       <p class="pcard-desc">A lavish blend of soft dusty-pink and blush roses intertwined with vibrant purple thistle accents, dramatically wrapped in matte black and gold paper.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Velvet%20Majesty%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Froses.html%3Fitem%3Dvelvet-majesty" target="_blank" class="pcard-btn">Enquire Now</a>
+      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Velvet%20Majesty%3A%20https%3A%2F%2Fwww.flowerpatchbyo.com%2Fapi%2Fshare%3Fitem%3Dvelvet-majesty" target="_blank" class="pcard-btn">Enquire Now</a>
     </div>
 
   </div>
