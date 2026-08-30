@@ -64,11 +64,49 @@ export default function handler(req, res) {
       desc: 'Pristine white gerberas, chrysanthemums, and fresh green lily buds woven with delicate baby’s breath.',
       img: 'https://www.flowerpatchbyo.com/Mixed%20Bouquet%206.jpeg',
       page: 'mixedbouquets.html'
+    },
+
+    // Vase Arrangements Collection
+    'pastel-meadow-vase': {
+      title: 'Pastel Meadow Vase - The Flower Patch',
+      desc: 'Bright magenta chrysanthemums, peach and cream daisies, soft pink filler sprays set in a classic glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%201.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'azure-mist-display': {
+      title: 'Azure Mist Display - The Flower Patch',
+      desc: 'White lilies, soft cream blooms, and deep green leaves framed by a cloud of indigo and white baby’s breath.',
+      img: 'https://www.flowerpatchbyo.com/Vase%202.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'sunset-harvest-vase': {
+      title: 'Sunset Harvest Vase - The Flower Patch',
+      desc: 'Massive orange gerbera daisy centerpiece paired with soft yellow carnations and crimson hypericum berries.',
+      img: 'https://www.flowerpatchbyo.com/Vase%203.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'majestic-white-box': {
+      title: 'Majestic White Hatbox - The Flower Patch',
+      desc: 'Ultra-premium display of white gerberas, dense chrysanthemums, and green lilies in a luxury hatbox.',
+      img: 'https://www.flowerpatchbyo.com/Vase%204.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'orchid-tulip-delight': {
+      title: 'Orchid & Tulip Delight - The Flower Patch',
+      desc: 'Deep purple orchids, vivid orange tulips, vibrant hot pink gerberas in a flared glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%205.jpeg',
+      page: 'vasarrangements.html'
+    },
+    'golden-radiance-vase': {
+      title: 'Golden Radiance Vase - The Flower Patch',
+      desc: 'Golden sunflowers, rich red velvet roses, delicate purple statice in a tall cylinder glass vase.',
+      img: 'https://www.flowerpatchbyo.com/Vase%206.jpeg',
+      page: 'vasarrangements.html'
     }
   };
 
-  const selected = items[item] || items['pastel-harmony'];
-  const redirectPage = selected.page || 'mixedbouquets.html';
+  const selected = items[item] || items['pastel-meadow-vase'];
+  const redirectPage = selected.page || 'vasarrangements.html';
 
   res.setHeader('Content-Type', 'text/html');
   res.status(200).send(`
