@@ -122,11 +122,19 @@ export default function handler(req, res) {
       desc: 'Towering triangular arrangement featuring orange roses, birds of paradise, red gerberas, and pincushion proteas.',
       img: 'https://www.flowerpatchbyo.com/SA3.jpeg',
       page: 'special.html'
+    },
+
+    // Wedding Collection
+    'cascading-bridal-bouquet': {
+      title: 'Cascading Bridal Bouquet - The Flower Patch',
+      desc: 'An extraordinary, dramatic cascade featuring pristine white calla lilies, tender cream roses, baby’s breath, and deep green foliage.',
+      img: 'https://www.flowerpatchbyo.com/Wedding%20item%201.jpeg',
+      page: 'weddings.html'
     }
   };
 
-  const selected = items[item] || items['majestic-tropical-oasis'];
-  const redirectPage = selected.page || 'special.html';
+  const selected = items[item] || items['cascading-bridal-bouquet'];
+  const redirectPage = selected.page || 'weddings.html';
 
   res.setHeader('Content-Type', 'text/html');
   res.status(200).send(`
