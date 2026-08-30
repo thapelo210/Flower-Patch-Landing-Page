@@ -17,15 +17,15 @@
       scroll-behavior: smooth;
     }
 
-body {
-  background: url('special bg.jpg') no-repeat center center / cover;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+    body {
+      background: url('special bg.jpg') no-repeat center center / cover;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
     /* ── NAV ── */
     nav {
@@ -127,7 +127,7 @@ body {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 2.5rem;
-      max-width: 750px;
+      max-width: 1100px;
       margin: 0 auto;
       justify-items: center;
     }
@@ -146,7 +146,7 @@ body {
       transition: background .3s, transform .3s, box-shadow .3s;
       width: 100%;
       max-width: 300px;
-      min-height: 400px;
+      min-height: 440px;
       scroll-margin-top: 2rem;
     }
     
@@ -198,13 +198,13 @@ body {
       line-height: 1.45;
     }
 
-    .pcard-price {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #ffffff;
+    .pcard-btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 85%;
       margin-top: auto;
-      padding: 0.5rem 0 0.4rem;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      align-items: center;
     }
 
     .pcard-btn {
@@ -220,8 +220,7 @@ body {
       font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 0.2rem;
-      width: 85%;
+      width: 100%;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       transition: background 0.2s, transform 0.2s, color 0.2s;
     }
@@ -230,6 +229,82 @@ body {
       background: #000;
       color: #fff;
       transform: scale(1.02);
+    }
+
+    .pcard-btn-video {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .pcard-btn-video:hover {
+      background: rgba(255, 255, 255, 0.35);
+      color: #fff;
+    }
+
+    /* ── VIDEO MODAL ── */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-container {
+      position: relative;
+      max-width: 420px;
+      width: 100%;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .modal-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .modal-container video {
+      width: 100%;
+      max-height: 75vh;
+      display: block;
+      object-fit: contain;
     }
 
     /* ── FOOTER ── */
@@ -377,7 +452,7 @@ body {
 <section class="explore">
   <div class="grid">
 
-    <!-- Special Arrangement 1 (Image 1) -->
+    <!-- Special Arrangement 1 -->
     <div class="pcard" id="majestic-tropical-oasis">
       <div class="pcard-img-wrap">
         <img src="Special Category 2.jpeg" alt="Majestic Tropical Oasis Floral Display" loading="lazy" />
@@ -385,10 +460,12 @@ body {
       <p class="pcard-name">Majestic Tropical Oasis</p>
       <p class="pcard-desc">An grand-tier statement masterpiece combining towering orange birds of paradise, soft pastel pink gerberas, budding lilies, and deep red anthuriums blended over a dense base of rich ferns.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Majestic%20Tropical%20Oasis%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Fspecial.html%23majestic-tropical-oasis" target="_blank" class="pcard-btn">Enquire Now</a>
+      <div class="pcard-btn-group">
+        <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Majestic%20Tropical%20Oasis%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Fspecial.html%23majestic-tropical-oasis" target="_blank" class="pcard-btn">Enquire Now</a>
+      </div>
     </div>
 
-    <!-- Special Arrangement 2 (Image 2) -->
+    <!-- Special Arrangement 2 -->
     <div class="pcard" id="crimson-safari-tower">
       <div class="pcard-img-wrap">
         <img src="Special Category 1.jpeg" alt="Crimson Safari Tower Floral Arrangement" loading="lazy" />
@@ -396,11 +473,40 @@ body {
       <p class="pcard-name">Crimson Safari Tower</p>
       <p class="pcard-desc">A fiery, high-impact vertical presentation layering striking orange birds of paradise, deep crimson gerbera daisies, and rich magenta anthuriums encased in structural wild greenery.</p>
 
-      <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Crimson%20Safari%20Tower%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Fspecial.html%23crimson-safari-tower" target="_blank" class="pcard-btn">Enquire Now</a>
+      <div class="pcard-btn-group">
+        <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Crimson%20Safari%20Tower%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Fspecial.html%23crimson-safari-tower" target="_blank" class="pcard-btn">Enquire Now</a>
+      </div>
+    </div>
+
+    <!-- Special Arrangement 3 (With Video Player) -->
+    <div class="pcard" id="vibrant-sunset-bloom">
+      <div class="pcard-img-wrap">
+        <img src="SA3.jpeg" alt="Vibrant Sunset Bloom Floral Arrangement" loading="lazy" />
+      </div>
+      <p class="pcard-name">Vibrant Sunset Bloom</p>
+      <p class="pcard-desc">A towering triangular arrangement featuring bright orange roses, exotic birds of paradise, fiery red gerberas, and pincushion proteas accented with soft pink chrysanthemums and delicate waxflowers.</p>
+
+      <div class="pcard-btn-group">
+        <button class="pcard-btn pcard-btn-video" onclick="openVideoModal()">
+          <span>▶</span> Watch Video
+        </button>
+        <a href="https://wa.me/263771950162?text=Hi%20The%20Flower%20Patch%2C%20I%20would%20like%20to%20enquire%20about%20the%20Vibrant%20Sunset%20Bloom%20shown%20here%3A%20https%3A%2F%2Ftheflowerpatchbyo.com%2Fspecial.html%23vibrant-sunset-bloom" target="_blank" class="pcard-btn">Enquire Now</a>
+      </div>
     </div>
 
   </div>
 </section>
+
+<!-- Video Popup Modal -->
+<div class="modal-overlay" id="videoModal" onclick="closeVideoModal(event)">
+  <div class="modal-container">
+    <button class="modal-close" onclick="closeVideoModal(event)">✕</button>
+    <video id="flowerVideo" controls playsinline>
+      <source src="vibrant-sunset-bloom-video.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 <footer id="contact">
   <div>
@@ -436,6 +542,25 @@ body {
 
   <div class="footer-credit">Website Design By <a href="https://www.instagram.com/mediabox.exe/">@mediaBox.exe</a></div>
 </footer>
+
+<script>
+  function openVideoModal() {
+    const modal = document.getElementById('videoModal');
+    const video = document.getElementById('flowerVideo');
+    modal.classList.add('active');
+    video.play();
+  }
+
+  function closeVideoModal(e) {
+    if (e.target.classList.contains('modal-overlay') || e.target.classList.contains('modal-close')) {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('flowerVideo');
+      modal.classList.remove('active');
+      video.pause();
+      video.currentTime = 0;
+    }
+  }
+</script>
 
 </body>
 </html>
