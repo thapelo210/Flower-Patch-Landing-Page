@@ -102,11 +102,31 @@ export default function handler(req, res) {
       desc: 'Golden sunflowers, rich red velvet roses, delicate purple statice in a tall cylinder glass vase.',
       img: 'https://www.flowerpatchbyo.com/Vase%206.jpeg',
       page: 'vasarrangements.html'
+    },
+
+    // Special Arrangements Collection
+    'majestic-tropical-oasis': {
+      title: 'Majestic Tropical Oasis - The Flower Patch',
+      desc: 'Grand-tier masterpiece combining towering orange birds of paradise, soft pink gerberas, budding lilies, and anthuriums.',
+      img: 'https://www.flowerpatchbyo.com/Special%20Category%202.jpeg',
+      page: 'special.html'
+    },
+    'crimson-safari-tower': {
+      title: 'Crimson Safari Tower - The Flower Patch',
+      desc: 'Fiery vertical presentation layering orange birds of paradise, deep crimson gerberas, and magenta anthuriums.',
+      img: 'https://www.flowerpatchbyo.com/Special%20Category%201.jpeg',
+      page: 'special.html'
+    },
+    'vibrant-sunset-bloom': {
+      title: 'Vibrant Sunset Bloom - The Flower Patch',
+      desc: 'Towering triangular arrangement featuring orange roses, birds of paradise, red gerberas, and pincushion proteas.',
+      img: 'https://www.flowerpatchbyo.com/SA3.jpeg',
+      page: 'special.html'
     }
   };
 
-  const selected = items[item] || items['pastel-meadow-vase'];
-  const redirectPage = selected.page || 'vasarrangements.html';
+  const selected = items[item] || items['majestic-tropical-oasis'];
+  const redirectPage = selected.page || 'special.html';
 
   res.setHeader('Content-Type', 'text/html');
   res.status(200).send(`
