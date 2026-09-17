@@ -40,16 +40,19 @@
     /* ── NAV ── */
     nav {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-space-between: space-between;
-      padding: 1.1rem 2.2rem;
+      gap: 1.2rem;
+      padding: 1.5rem 1.5rem;
+      position: relative;
+      z-index: 50;
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
       gap: 0.55rem;
-      font-size: 1.05rem;
+      font-size: 1.2rem;
       font-weight: 700;
       text-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     }
@@ -63,7 +66,7 @@
     }
 
     .nav-brand-img {
-      height: 1.4rem;
+      height: 1.6rem;
       width: auto;
       object-fit: contain;
       display: inline-block;
@@ -72,13 +75,22 @@
 
     .nav-links {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 1.2rem;
+      padding: 0.5rem 0.2rem 0.8rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
     }
 
     .nav-item {
-      font-size: 0.9rem;
-      font-weight: 400;
+      font-size: 0.88rem;
+      font-weight: 500;
       color: #fff;
       text-decoration: none;
       transition: opacity .2s;
@@ -88,16 +100,18 @@
       cursor: pointer;
       font-family: inherit;
       padding: 0;
+      flex-shrink: 0;
     }
     .nav-item:hover { opacity: .65; }
 
     /* ── HERO ── */
     .hero {
-      padding: 2rem 2.2rem 1rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-size: clamp(2.3rem, 7vw, 4.5rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 1rem;
@@ -105,31 +119,33 @@
     }
 
     .hero p {
-      font-size: 0.88rem;
+      font-size: 0.95rem;
       font-weight: 300;
       color: rgba(255, 255, 255, 0.85);
       max-width: 650px;
       line-height: 1.7;
       text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      margin: 0 auto;
     }
 
     /* ── GRID ── */
     .explore {
-      padding: 2rem 2.2rem 4rem;
+      padding: 2rem 1.5rem 4rem;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem;
       max-width: 950px;
       margin: 0 auto;
+      justify-items: center;
     }
 
     .pcard {
       background: rgba(255, 255, 255, 0.14); 
       border-radius: 18px;
-      padding: 0 0 1.2rem;
+      padding: 0 0 1.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -138,9 +154,9 @@
         inset 0 0 0 1.5px rgba(255, 255, 255, 0.25),
         0 10px 24px rgba(0, 0, 0, 0.18);
       transition: background .3s, transform .3s, box-shadow .3s;
-      width: 240px;
-      min-height: 380px;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 280px;
+      min-height: 400px;
       scroll-margin-top: 2rem;
     }
 
@@ -179,25 +195,25 @@
       font-weight: 600;
       text-align: center;
       color: #ffffff;
-      padding: 1rem 0.8rem 0.3rem;
+      padding: 1.2rem 0.8rem 0.4rem;
       line-height: 1.35;
     }
 
     .pcard-desc {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       font-weight: 300;
       text-align: center;
-      color: rgba(255, 255, 255, 0.8);
-      padding: 0 1rem 0.8rem;
-      line-height: 1.4;
+      color: rgba(255, 255, 255, 0.85);
+      padding: 0 1.2rem 1rem;
+      line-height: 1.45;
     }
 
     .pcard-price {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #ffffff;
       margin-top: auto;
-      padding: 0.5rem 0 0.25rem;
+      padding: 0.5rem 0 0.4rem;
       text-shadow: 0 2px 4px rgba(0,0,0,0.15);
     }
 
@@ -209,9 +225,9 @@
       color: #c07ab0;
       border: none;
       border-radius: 20px;
-      padding: 0.55rem 1.4rem;
+      padding: 0.6rem 1.4rem;
       font-family: 'Inter', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       cursor: pointer;
       margin-top: auto;
@@ -229,10 +245,10 @@
     /* ── FOOTER ── */
     footer {
       background: #000;
-      padding: 2.8rem 2.2rem 1.8rem;
+      padding: 3rem 1.5rem 2rem;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem 2rem;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
       margin-top: auto;
       color: #fff;
     }
@@ -241,35 +257,40 @@
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand img {
+      width: 35px;
+      height: 35px;
+      object-fit: contain;
     }
 
     .footer-addr {
-      font-size: 0.83rem;
+      font-size: 0.88rem;
       font-weight: 300;
-      color: rgba(255,255,255,.55);
+      color: rgba(255,255,255,.6);
       line-height: 1.65;
     }
 
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      align-items: flex-end;
-      justify-content: flex-start;
+      gap: 1.2rem;
+      align-items: flex-start;
     }
 
     .flink {
       display: flex;
       align-items: center;
       gap: 0.7rem;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #fff;
       text-decoration: underline;
-      text-underline-offset: 3px;
+      text-underline-offset: 4px;
       cursor: pointer;
       transition: opacity .2s;
     }
@@ -282,24 +303,56 @@
       flex-shrink: 0;
     }
 
+    .flink img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
     .footer-credit {
-      grid-column: 1/-1;
-      text-align: right;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,.3);
-      padding-top: 0.8rem;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,.35);
+      padding-top: 1.5rem;
       border-top: 1px solid rgba(255,255,255,.08);
     }
-    .footer-credit a { color: rgba(255,255,255,.45); text-decoration: none; }
+    .footer-credit a { color: rgba(255,255,255,.5); text-decoration: none; }
 
-    @media (max-width: 768px) {
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    }
-
-    @media (max-width: 540px) {
-      .grid { grid-template-columns: 1fr; gap: 2rem; }
-      footer { grid-template-columns: 1fr; }
-      .footer-links { align-items: flex-start; }
+    /* ── RESPONSIVE BREAKPOINT ── */
+    @media (min-width: 768px) {
+      nav {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.5rem 2.5rem;
+      }
+      .nav-links {
+        width: auto;
+        overflow-x: visible;
+        white-space: normal;
+        padding: 0;
+        gap: 1.5rem;
+      }
+      .hero {
+        padding: 3rem 2.5rem 1rem;
+        text-align: left;
+      }
+      .hero p {
+        margin: 0;
+      }
+      .explore {
+        padding: 2rem 2.5rem 4rem;
+      }
+      footer {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 4rem 2rem;
+      }
+      .footer-links {
+        align-items: flex-end;
+      }
+      .footer-credit {
+        grid-column: 1 / -1;
+        text-align: right;
+      }
     }
   </style>
 </head>
@@ -308,7 +361,7 @@
 <nav>
   <div class="nav-brand">
     <a href="index.html">
-      <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" />
+      <img src="FlowerPatch_Icon.webp" alt="Logo" class="nav-brand-img" />
       The Flower Patch
     </a>
   </div>
@@ -337,7 +390,7 @@
     <!-- Combo 1 -->
     <div class="pcard" id="fruit-basket-bloom">
       <div class="pcard-img-wrap">
-        <img src="Fruit Basket and Bloom Combo.jpeg" alt="Fruit Basket and Bloom Combo Gift Pack" loading="lazy" />
+        <img src="Fruit_Basket_and_Bloom_Combo.webp" alt="Fruit Basket and Bloom Combo Gift Pack" loading="lazy" />
       </div>
       <p class="pcard-name">Fruit Basket & Bloom</p>
       <p class="pcard-desc">A premium woven basket loaded with fresh seasonal fruits, creamy yogurts, and select savory treats, beautifully paired alongside a vibrant hand-tied red and white mixed bloom bouquet.</p>
@@ -348,7 +401,7 @@
     <!-- Combo 2 -->
     <div class="pcard" id="fresh-harvest-basket">
       <div class="pcard-img-wrap">
-        <img src="Combo 2.jpeg" alt="Fresh Harvest Fruit Basket" loading="lazy" />
+        <img src="Combo_2.webp" alt="Fresh Harvest Fruit Basket" loading="lazy" />
       </div>
       <p class="pcard-name">Fresh Harvest Basket</p>
       <p class="pcard-desc">A charming tall-handled wicker basket packed with vibrant fresh fruits—including ripe bananas, citrus, and pears—paired with juice and wrapped with a lovely pink bow.</p>
@@ -362,7 +415,7 @@
 <footer id="contact">
   <div>
     <div class="footer-brand">
-      <img src="FlowerPatch Icon.png" alt="Logo" class="nav-brand-img" style="height: 40px; width: auto;" />
+      <img src="FlowerPatch_Icon.webp" alt="Logo" />
       <span>The Flower Patch</span>
     </div>
     <p class="footer-addr">St Andrews Building next to Greenvale, Bulawayo,<br/>Zimbabwe</p>
@@ -370,21 +423,23 @@
 
   <div class="footer-links">
     <a class="flink" href="https://www.instagram.com/the_flower_patchbyo/" target="_blank">
-      <span class="flink-ico">
-        <img src="insta icon.png" alt="Instagram" style="width: 24px; height: 24px;" />
-      </span>
+      <div class="flink-ico">
+        <img src="insta_icon.webp" alt="Instagram" />
+      </div>
       <span>the_flowerpatch_byo</span>
     </a>
 
     <a class="flink" href="https://www.facebook.com/people/The-Flower-Patch/61582725973139/" target="_blank">
-      <span class="flink-ico">
-        <img src="fbicon.png" alt="Facebook" style="width: 24px; height: 24px;" />
-      </span>
+      <div class="flink-ico">
+        <img src="fbicon.webp" alt="Facebook" />
+      </div>
       <span>The Flower Patch</span>
     </a>
 
     <a class="flink" href="tel:+263771950162">
-      <img src="phone icon.webp" alt="Call" style="width: 20px; height: 20px;" />
+      <div class="flink-ico">
+        <img src="phone_icon.webp" alt="Call" />
+      </div>
       <span>+263 77 195 0162</span>
     </a>
   </div>
